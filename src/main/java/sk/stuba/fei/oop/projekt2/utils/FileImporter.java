@@ -6,12 +6,15 @@ import java.io.File;
 
 public class FileImporter {
 
-    public File loadFile() {
+    public File loadFile() throws IllegalArgumentException {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("xml files (*.xml)", "xml"));
         int returnValue = fileChooser.showOpenDialog(null);
-        return (returnValue == JFileChooser.APPROVE_OPTION) ? fileChooser.getSelectedFile() : null;
+        if ((returnValue == JFileChooser.APPROVE_OPTION)) {
+            return fileChooser.getSelectedFile();
+        }
+        throw new IllegalArgumentException("File was not loaded!");
     }
 
 }
