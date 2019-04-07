@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
-public class XMLLoader {
+class XMLLoader {
 
     Document loadDocumentFromXML(File file) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);

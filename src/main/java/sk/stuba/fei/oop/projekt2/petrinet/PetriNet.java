@@ -43,6 +43,52 @@ public final class PetriNet {
         }
     }
 
+    /*
+     *
+     * ADDED
+     *
+     * */
+    public List<Place> getPlaces() {
+        List<Place> places = new LinkedList<>();
+        for (Map.Entry<Short,Vertex> shortVertexEntry:this.vertices.entrySet()) {
+            Vertex vertex = shortVertexEntry.getValue();
+            if (vertex instanceof Place) {
+                places.add((Place)vertex);
+            }
+        }
+        return places;
+    }
+
+    // Added for part 2 of PetriNet project
+    public List<Transition> getTransitions() {
+        List<Transition> transitions = new LinkedList<>();
+        for (Map.Entry<Short,Vertex> shortVertexEntry:this.vertices.entrySet()) {
+            Vertex vertex = shortVertexEntry.getValue();
+            if (vertex instanceof Transition) {
+                transitions.add((Transition)vertex);
+            }
+        }
+        return transitions;
+    }
+
+    public List<Arc> getArcs() {
+        return new ArrayList<Arc>(this.arcs.values());
+    }
+
+    public boolean isTransitionFireable(Short transitionID) {
+        Transition transition = this.getTransitionFromID(transitionID);
+        // Get places connected with transition
+        ArrayList<Arc> transitionArcs = this.getTransitionArcs(transition);
+        // Get input places
+        ArrayList<Arc> inputArcs = this.filterIOArcs(transitionArcs, Input.class);
+        return canAllArcsConsume(inputArcs);
+    }
+    /*
+     *
+     * ADDED END
+     *
+     * */
+
     public boolean fire(Short transitionID) {
         Transition transition = this.getTransitionFromID(transitionID);
         // Get places connected with transition

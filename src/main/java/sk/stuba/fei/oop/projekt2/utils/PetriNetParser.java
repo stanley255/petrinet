@@ -6,9 +6,12 @@ import sk.stuba.fei.oop.projekt2.petrinet.PetriNet;
 import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicInputArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
-import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Vertex;
 import sk.stuba.fei.oop.projekt2.generated.Document;
 import sk.stuba.fei.oop.projekt2.generated.Place;
+import sk.stuba.fei.oop.projekt2.petrinet.exceptions.FailedNetConversion;
+import sk.stuba.fei.oop.projekt2.petrinet.exceptions.IllegalArcWeight;
+import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
+import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NullVertexConnection;
 
 
 import javax.xml.bind.JAXBException;
@@ -25,16 +28,20 @@ public class PetriNetParser {
     private Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition> transitions;
 
 
-    public PetriNetParser(File file) throws JAXBException {
+    public PetriNetParser(File file) throws JAXBException, FailedNetConversion {
         this.loadedNetDocument = new XMLLoader().loadDocumentFromXML(file);
         this.petriNet = new PetriNet();
-        this.places = new HashMap<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place>();
-        this.transitions = new HashMap<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition>();
+        this.places = new HashMap<>();
+        this.transitions = new HashMap<>();
         try {
             this.convertToPetriNet();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (IllegalArcWeight| NegativeTokenCount| NullVertexConnection | IllegalArgumentException e) {
+            throw new FailedNetConversion();
         }
+    }
+
+    public PetriNet getPetriNet() {
+        return petriNet;
     }
 
     private void convertToPetriNet() {
@@ -85,11 +92,12 @@ public class PetriNetParser {
     private void convertToRegularArc(Arc loadedGeneratedArc) {
         Short sourceID = loadedGeneratedArc.getSourceId();
         Short destinationID = loadedGeneratedArc.getDestinationId();
+        int weight = loadedGeneratedArc.getMultiplicity();
         if (isInputArc(loadedGeneratedArc)) {
-            BasicInputArc arc = new BasicInputArc(places.get(sourceID),transitions.get(destinationID));
+            BasicInputArc arc = new BasicInputArc(places.get(sourceID),transitions.get(destinationID),weight);
             petriNet.add(arc);
         } else {
-            BasicOutputArc arc = new BasicOutputArc(transitions.get(sourceID),places.get(destinationID));
+            BasicOutputArc arc = new BasicOutputArc(transitions.get(sourceID),places.get(destinationID),weight);
             petriNet.add(arc);
         }
     }
@@ -100,7 +108,7 @@ public class PetriNetParser {
     }
 
     private boolean isInputArc(Arc loadedGeneratedArc) {
-        return this.places.containsKey(loadedGeneratedArc.getId());
+        return this.places.containsKey(loadedGeneratedArc.getSourceId());
     }
 
 }
