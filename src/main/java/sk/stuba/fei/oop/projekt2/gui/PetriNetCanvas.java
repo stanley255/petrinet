@@ -44,10 +44,13 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
             if (arc instanceof BasicArc) {
                 int[] textCoords = getMiddleCoordinates(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
                 g.drawString(String.valueOf(((BasicArc) arc).getWeight()),textCoords[0]-7,textCoords[1]-7); // TODO Offset
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,15,7);
+                int[] newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS);
+                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
             } else if (arc instanceof ResetArc) {
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,10,7);
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,15,7);
+                int[] newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS);
+                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
+                newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],RADIUS);
+                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
             }
         }
     }
@@ -96,6 +99,22 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
 
         g.drawLine(x1, y1, x2, y2);
         g.fillPolygon(xpoints, ypoints, 3);
+    }
+
+    private int[] test(int x1, int y1, int x2, int y2, int radius) {
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+        double length = Math.sqrt(dx * dx + dy * dy);
+        if (length > 0)
+        {
+            dx /= length;
+            dy /= length;
+        }
+        dx *= length - radius;
+        dy *= length - radius;
+        int x3 = (int)(x1 + dx);
+        int y3 = (int)(y1 + dy);
+        return new int[]{x3,y3};
     }
 
     private int[] getMiddleCoordinates(double x1, double y1, double x2, double y2) {
