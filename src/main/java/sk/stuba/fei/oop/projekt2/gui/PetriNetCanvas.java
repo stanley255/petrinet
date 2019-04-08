@@ -18,12 +18,17 @@ import java.util.Map;
 
 public class PetriNetCanvas extends Canvas implements MouseListener {
 
-    private PetriNet petriNet;
-    private Map<Short,Rectangle2D> transitionRectangles;
     private final int DIAMETER = 30;
     private final int RADIUS = 15;
+    private final int ARROW_LENGTH = RADIUS;
+    private final int ARROW_WIDTH = 6;
+    private final int ARROW_OFFSET = 5;
+    private final Color COLOR_GREY = new Color(187, 187, 187);
 
-    public void setPetriNet(PetriNet petriNet) {
+    private PetriNet petriNet;
+    private Map<Short,Rectangle2D> transitionRectangles;
+
+    void setPetriNet(PetriNet petriNet) {
         this.petriNet = petriNet;
     }
 
@@ -37,46 +42,72 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     }
 
     private void drawLines(Graphics2D g) {
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(Color.BLACK);
         for (Arc arc : petriNet.getArcs()) {
             Vertex startPoint = (Vertex) arc.getStartPoint();
-            Vertex endPoint = (Vertex) arc.getEndPoint();
+            Vertex endPoint = arc.getEndPoint();
             if (arc instanceof BasicArc) {
-                int[] textCoords = getMiddleCoordinates(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
-                g.drawString(String.valueOf(((BasicArc) arc).getWeight()),textCoords[0]-7,textCoords[1]-7); // TODO Offset
-                int[] newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS);
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
+                drawBasicLine(g,startPoint,endPoint,((BasicArc) arc).getWeight());
             } else if (arc instanceof ResetArc) {
-                int[] newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS);
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
-                newCoords = test(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],RADIUS);
-                drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],15,5);
+                drawResetLine(g,startPoint,endPoint);
             }
         }
     }
 
+    private void drawBasicLine(Graphics2D g, Vertex startPoint, Vertex endPoint, int weight) {
+        drawWeightToArc(g, startPoint, endPoint, weight);
+        int[] newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS+ARROW_OFFSET);
+        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
+    }
+
+    private void drawWeightToArc(Graphics2D g, Vertex startPoint, Vertex endPoint, int weight) {
+        int[] textCoords = getMiddleCoordinates(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
+        g.drawString(String.valueOf(weight),textCoords[0]-7,textCoords[1]-7); // TODO Offset
+    }
+
+    private void drawResetLine(Graphics2D g, Vertex startPoint, Vertex endPoint) {
+        int[] newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS+ARROW_OFFSET);
+        // Draw first arrow
+        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
+        newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],RADIUS);
+        // Draw second arrow
+        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
+    }
+
     private void drawPlaces(Graphics2D g) {
         for (Place place : petriNet.getPlaces()) {
+            // Draw Ellipse
             Ellipse2D.Double ellipse = new Ellipse2D.Double(place.getX(),place.getY(),DIAMETER,DIAMETER);
-            g.setColor(new Color(187, 187, 187));
+            g.setColor(COLOR_GREY);
             g.fill(ellipse);
-            g.setColor(new Color(0, 0, 0));
-            int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(place.getTokenCount()));
-            g.drawString(String.valueOf(place.getTokenCount()),place.getX()+RADIUS-fontWidth/2,place.getY()+RADIUS+4);
+            drawTokenCount(g, place);
         }
+    }
+
+    private void drawTokenCount(Graphics2D g, Place place) {
+        g.setColor(Color.BLACK);
+        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(place.getTokenCount()));
+        g.drawString(String.valueOf(place.getTokenCount()),place.getX()+RADIUS-fontWidth/2,place.getY()+RADIUS+4);
     }
 
     private void drawTransitions(Graphics2D g) {
         transitionRectangles = new HashMap<>();
         for (Transition transition : petriNet.getTransitions()) {
-            if (petriNet.isTransitionFireable(transition.getId())) {
-                g.setColor(new Color(3, 255, 19));
-            } else {
-                g.setColor(new Color(255, 15, 0));
-            }
+            // Pick transition color based on transition's ability to fire
+            pickTransitionColor(g, transition);
+            // Draw transition
             Rectangle2D rectangle = new Rectangle2D.Double(transition.getX(), transition.getY(), DIAMETER, DIAMETER);
             g.fill(rectangle);
+            // Put transition to transitionRectangles (map to determine which transition was clicked)
             transitionRectangles.put(transition.getId(),rectangle);
+        }
+    }
+
+    private void pickTransitionColor(Graphics2D g, Transition transition) {
+        if (petriNet.isTransitionFireable(transition.getId())) {
+            g.setColor(Color.GREEN);
+        } else {
+            g.setColor(Color.RED);
         }
     }
 
@@ -101,7 +132,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         g.fillPolygon(xpoints, ypoints, 3);
     }
 
-    private int[] test(int x1, int y1, int x2, int y2, int radius) {
+    private int[] drawOffsetLine(int x1, int y1, int x2, int y2, int offset) {
         double dx = x2 - x1;
         double dy = y2 - y1;
         double length = Math.sqrt(dx * dx + dy * dy);
@@ -110,8 +141,8 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
             dx /= length;
             dy /= length;
         }
-        dx *= length - radius;
-        dy *= length - radius;
+        dx *= length - offset;
+        dy *= length - offset;
         int x3 = (int)(x1 + dx);
         int y3 = (int)(y1 + dy);
         return new int[]{x3,y3};
