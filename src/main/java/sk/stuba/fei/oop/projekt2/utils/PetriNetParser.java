@@ -48,7 +48,6 @@ public class PetriNetParser {
         convertPlaces();
         convertTransitions();
         convertArcs();
-        petriNet.printPlaces();
     }
 
     private void convertPlaces() {

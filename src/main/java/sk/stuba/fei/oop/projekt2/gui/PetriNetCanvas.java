@@ -7,10 +7,13 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Vertex;
+import sk.stuba.fei.oop.projekt2.utils.GeometryUtils;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.*;
 import java.util.HashMap;
@@ -22,11 +25,13 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     private final int RADIUS = 15;
     private final int ARROW_LENGTH = RADIUS;
     private final int ARROW_WIDTH = 6;
-    private final int ARROW_OFFSET = 5;
+    private final int ARROW_OFFSET = 3;
+    private final int TEXT_OFFSET = 7;
     private final Color COLOR_GREY = new Color(187, 187, 187);
 
     private PetriNet petriNet;
     private Map<Short,Rectangle2D> transitionRectangles;
+    private final GeometryUtils geometryUtils = new GeometryUtils();
 
     void setPetriNet(PetriNet petriNet) {
         this.petriNet = petriNet;
@@ -36,6 +41,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         if (petriNet == null) { return; }
+        loadTransitionRectangles();
         drawLines(g2);
         drawPlaces(g2);
         drawTransitions(g2);
@@ -55,22 +61,35 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     }
 
     private void drawBasicLine(Graphics2D g, Vertex startPoint, Vertex endPoint, int weight) {
+        if (endPoint instanceof Transition) {
+            drawArrowLineToRectangle(g,startPoint,endPoint);
+        } else {
+            drawArrowLineToEllipse(g,startPoint,endPoint);
+        }
         drawWeightToArc(g, startPoint, endPoint, weight);
-        int[] newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS+ARROW_OFFSET);
+    }
+
+    private void drawArrowLineToRectangle(Graphics2D g, Vertex startPoint, Vertex endPoint) {
+        Line2D.Double l = new Line2D.Double(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
+        Point2D.Double p = geometryUtils.getIntersectionPoint(l,this.transitionRectangles.get(endPoint.getId()));
+        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,(int)p.getX(),(int)p.getY(),ARROW_LENGTH,ARROW_WIDTH);
+    }
+
+    private void drawArrowLineToEllipse(Graphics2D g, Vertex startPoint, Vertex endPoint) {
+        int[] newCoords = geometryUtils.getOffsetCoords(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS+ARROW_OFFSET);
         drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
     }
 
     private void drawWeightToArc(Graphics2D g, Vertex startPoint, Vertex endPoint, int weight) {
-        int[] textCoords = getMiddleCoordinates(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
-        g.drawString(String.valueOf(weight),textCoords[0]-7,textCoords[1]-7); // TODO Offset
+        int[] textCoords = geometryUtils.getMiddleCoordinates(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
+        g.drawString(String.valueOf(weight),textCoords[0]-TEXT_OFFSET,textCoords[1]-TEXT_OFFSET);
     }
 
     private void drawResetLine(Graphics2D g, Vertex startPoint, Vertex endPoint) {
-        int[] newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,RADIUS+ARROW_OFFSET);
-        // Draw first arrow
-        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
-        newCoords = drawOffsetLine(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],RADIUS);
-        // Draw second arrow
+        Line2D.Double l = new Line2D.Double(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS);
+        Point2D.Double p = geometryUtils.getIntersectionPoint(l,this.transitionRectangles.get(endPoint.getId()));
+        drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,(int)p.getX(),(int)p.getY(),ARROW_LENGTH,ARROW_WIDTH);
+        int[] newCoords = geometryUtils.getOffsetCoords(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,(int)p.getX(),(int)p.getY(),RADIUS+ARROW_OFFSET);
         drawArrowLine(g,startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,newCoords[0],newCoords[1],ARROW_LENGTH,ARROW_WIDTH);
     }
 
@@ -111,6 +130,14 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         }
     }
 
+    private void loadTransitionRectangles() {
+        transitionRectangles = new HashMap<>();
+        for (Transition transition : petriNet.getTransitions()) {
+            Rectangle2D rectangle = new Rectangle2D.Double(transition.getX(), transition.getY(), DIAMETER, DIAMETER);
+            transitionRectangles.put(transition.getId(),rectangle);
+        }
+    }
+
     private void drawArrowLine(Graphics g, int x1, int y1, int x2, int y2, int d, int h) {
         int dx = x2 - x1, dy = y2 - y1;
         double D = Math.sqrt(dx*dx + dy*dy);
@@ -132,25 +159,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         g.fillPolygon(xpoints, ypoints, 3);
     }
 
-    private int[] drawOffsetLine(int x1, int y1, int x2, int y2, int offset) {
-        double dx = x2 - x1;
-        double dy = y2 - y1;
-        double length = Math.sqrt(dx * dx + dy * dy);
-        if (length > 0)
-        {
-            dx /= length;
-            dy /= length;
-        }
-        dx *= length - offset;
-        dy *= length - offset;
-        int x3 = (int)(x1 + dx);
-        int y3 = (int)(y1 + dy);
-        return new int[]{x3,y3};
-    }
 
-    private int[] getMiddleCoordinates(double x1, double y1, double x2, double y2) {
-        return new int[]{(int) ((x1+x2)/2), (int) ((y1+y2)/2)};
-    }
 
     @Override
     public void mouseClicked(MouseEvent e) {
