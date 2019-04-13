@@ -13,35 +13,29 @@ import sk.stuba.fei.oop.projekt2.petrinet.exceptions.IllegalArcWeight;
 import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
 import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NullVertexConnection;
 
-
-import javax.xml.bind.JAXBException;
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PetriNetParser {
+public class PetriNetConverter extends Converter<PetriNet> {
 
     private Document loadedNetDocument;
     private PetriNet petriNet;
     private Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place> places;
     private Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition> transitions;
 
-
-    public PetriNetParser(File file) throws JAXBException, FailedNetConversion {
-        this.loadedNetDocument = new XMLLoader().loadDocumentFromXML(file);
+    @Override
+    PetriNet convert(Document document) throws FailedNetConversion {
+        this.loadedNetDocument = document;
         this.petriNet = new PetriNet();
         this.places = new HashMap<>();
         this.transitions = new HashMap<>();
         try {
             this.convertToPetriNet();
+            return petriNet;
         } catch (IllegalArcWeight| NegativeTokenCount| NullVertexConnection | IllegalArgumentException e) {
             throw new FailedNetConversion();
         }
-    }
-
-    public PetriNet getPetriNet() {
-        return petriNet;
     }
 
     private void convertToPetriNet() {
@@ -89,20 +83,24 @@ public class PetriNetParser {
     }
 
     private void convertToRegularArc(Arc loadedGeneratedArc) {
+        Short arcID = loadedGeneratedArc.getId();
         Short sourceID = loadedGeneratedArc.getSourceId();
         Short destinationID = loadedGeneratedArc.getDestinationId();
         int weight = loadedGeneratedArc.getMultiplicity();
         if (isInputArc(loadedGeneratedArc)) {
             BasicInputArc arc = new BasicInputArc(places.get(sourceID),transitions.get(destinationID),weight);
+            arc.setId(arcID);
             petriNet.add(arc);
         } else {
             BasicOutputArc arc = new BasicOutputArc(transitions.get(sourceID),places.get(destinationID),weight);
+            arc.setId(arcID);
             petriNet.add(arc);
         }
     }
 
     private void convertToResetArc(Arc loadedGeneratedArc) {
         sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc resetArc = new ResetArc(this.places.get(loadedGeneratedArc.getSourceId()),this.transitions.get(loadedGeneratedArc.getDestinationId()));
+        resetArc.setId(loadedGeneratedArc.getId());
         this.petriNet.add(resetArc);
     }
 

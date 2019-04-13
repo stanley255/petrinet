@@ -18,6 +18,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PetriNetCanvas extends Canvas implements MouseListener {
@@ -30,6 +31,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     private final Color COLOR_GREY = new Color(187, 187, 187);
 
     private PetriNet petriNet;
+    private List<Drawable> drawables;
     private Map<Short,Rectangle2D> transitionRectangles;
     private final GeometryUtils geometryUtils = new GeometryUtils();
 
@@ -37,14 +39,23 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         this.petriNet = petriNet;
     }
 
+    public void setDrawables(List<Drawable> drawables) {
+        this.drawables = drawables;
+    }
+
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         if (petriNet == null) { return; }
-        loadTransitionRectangles();
+
+        /*loadTransitionRectangles();
         drawLines(g2);
         drawPlaces(g2);
-        drawTransitions(g2);
+        drawTransitions(g2);*/
+
+        for (Drawable drawable : drawables) {
+            drawable.draw(g2);
+        }
     }
 
     private void drawLines(Graphics2D g) {

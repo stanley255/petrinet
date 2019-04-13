@@ -10,7 +10,8 @@ public class PetriNetFrame extends JFrame {
     public PetriNetFrame(String title) throws HeadlessException {
         super(title);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setSize(new Dimension(500,500)); // TODO: DELETE
         Panel panel = new Panel();
 
         PetriNetCanvas petriNetCanvas = new PetriNetCanvas();
