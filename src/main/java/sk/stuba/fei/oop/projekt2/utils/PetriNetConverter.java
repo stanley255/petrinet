@@ -51,8 +51,6 @@ public class PetriNetConverter extends Converter<PetriNet> {
             place.setId(loadedPlace.getId());
             place.setName(loadedPlace.getLabel());
             place.setTokenCount(loadedPlace.getTokens());
-            place.setX(loadedPlace.getX());
-            place.setY(loadedPlace.getY());
             this.petriNet.add(place);
             this.places.put(place.getId(),place);
         }
@@ -64,8 +62,6 @@ public class PetriNetConverter extends Converter<PetriNet> {
             sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition transition = new sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition();
             transition.setId(loadedTransition.getId());
             transition.setName(loadedTransition.getLabel());
-            transition.setX(loadedTransition.getX());
-            transition.setY(loadedTransition.getY());
             this.petriNet.add(transition);
             this.transitions.put(transition.getId(),transition);
         }

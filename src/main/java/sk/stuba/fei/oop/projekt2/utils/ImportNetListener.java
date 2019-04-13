@@ -30,7 +30,10 @@ public class ImportNetListener implements ActionListener {
             // Parsing Document to PetriNet
             PetriNet petriNet = new PetriNetConverter().convert(document);
             // Parsing Document to Drawables
-            List<Drawable> drawables = new DrawableConverter().convert(document);
+            DrawableConverter drawableConverter = new DrawableConverter();
+            drawableConverter.setPetriNet(petriNet);
+            List<Drawable> drawables = drawableConverter.convert(document);
+            // Import converted variables to canvas
             canvas.setPetriNet(petriNet);
             canvas.setDrawables(drawables);
             canvas.repaint();

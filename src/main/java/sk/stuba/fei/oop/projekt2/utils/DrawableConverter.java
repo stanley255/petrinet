@@ -5,11 +5,9 @@ import sk.stuba.fei.oop.projekt2.generated.Document;
 import sk.stuba.fei.oop.projekt2.generated.Place;
 import sk.stuba.fei.oop.projekt2.generated.Transition;
 import sk.stuba.fei.oop.projekt2.gui.*;
+import sk.stuba.fei.oop.projekt2.petrinet.PetriNet;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DrawableConverter extends Converter<List<Drawable>> {
 
@@ -17,6 +15,7 @@ public class DrawableConverter extends Converter<List<Drawable>> {
     private List<Drawable> drawables = new ArrayList<>();
     private Map<Short,Place2D> places = new HashMap<>();
     private Map<Short,Transition2D> transitions = new HashMap<>();
+    private PetriNet petriNet;
 
     private final int DIAMETER = 30;
 
@@ -26,12 +25,18 @@ public class DrawableConverter extends Converter<List<Drawable>> {
         convertPlaces();
         convertTransitions();
         convertArcs();
+        Collections.reverse(drawables);
         return drawables;
     }
 
+    public void setPetriNet(PetriNet petriNet) {
+        this.petriNet = petriNet;
+    }
+
     private void convertPlaces() {
+        Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place> petriPlaces = petriNet.getPlaces();
         for (Place place : document.getPlace()) {
-            Place2D place2D = new Place2D(place.getX(),place.getY(),DIAMETER,DIAMETER,place.getId(),place.getLabel(),place.getTokens());
+            Place2D place2D = new Place2D(place.getX(),place.getY(),DIAMETER,DIAMETER,place.getId(),place.getLabel(),petriPlaces.get(place.getId()));
             places.put(place.getId(),place2D);
             drawables.add(place2D);
         }
@@ -39,7 +44,8 @@ public class DrawableConverter extends Converter<List<Drawable>> {
 
     private void convertTransitions() {
         for (Transition transition : document.getTransition()) {
-            Transition2D transition2D = new Transition2D(transition.getX(),transition.getY(),DIAMETER,DIAMETER,transition.getId(),transition.getLabel());
+            boolean fireable = petriNet.isTransitionFireable(transition.getId());
+            Transition2D transition2D = new Transition2D(transition.getX(),transition.getY(),DIAMETER,DIAMETER,transition.getId(),transition.getLabel(), petriNet);
             transitions.put(transition.getId(),transition2D);
             drawables.add(transition2D);
         }
