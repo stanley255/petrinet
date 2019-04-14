@@ -12,8 +12,8 @@ public class ResetArc2D extends Line2D.Double implements Drawable {
 
     private Short id;
     private final int RADIUS = 15;
-    private final int ARROW_LENGTH = RADIUS;
-    private final int ARROW_WIDTH = 6;
+    private final int ARROW_LENGTH = 8;
+    private final int ARROW_WIDTH = 5;
     private final GeometryUtils geometryUtils = new GeometryUtils();
 
     public ResetArc2D(double x1, double y1, double x2, double y2, Short id) {
@@ -24,7 +24,6 @@ public class ResetArc2D extends Line2D.Double implements Drawable {
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.BLACK);
-        //int[] newCoords = geometryUtils.getOffsetCoordinates((int)x2+RADIUS,(int)y2+RADIUS,(int)x1+RADIUS,(int)y1+RADIUS,RADIUS);
         Line2D.Double l = new Line2D.Double(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
         Rectangle2D.Double rectangle = new Rectangle2D.Double(x2,y2,2*RADIUS,2*RADIUS);
         Point2D.Double p = geometryUtils.getIntersectionPoint(l,rectangle);

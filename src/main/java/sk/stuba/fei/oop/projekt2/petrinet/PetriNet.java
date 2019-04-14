@@ -13,8 +13,8 @@ public final class PetriNet {
     private Map<Short, Arc> arcs;
 
     public PetriNet() {
-        this.vertices = new HashMap<Short, Vertex>();
-        this.arcs =  new HashMap<Short, Arc>();
+        this.vertices = new HashMap<>();
+        this.arcs =  new HashMap<>();
     }
 
     public void add(Vertex vertex) {

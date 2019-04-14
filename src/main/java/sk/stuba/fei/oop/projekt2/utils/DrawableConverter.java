@@ -44,7 +44,6 @@ public class DrawableConverter extends Converter<List<Drawable>> {
 
     private void convertTransitions() {
         for (Transition transition : document.getTransition()) {
-            boolean fireable = petriNet.isTransitionFireable(transition.getId());
             Transition2D transition2D = new Transition2D(transition.getX(),transition.getY(),DIAMETER,DIAMETER,transition.getId(),transition.getLabel(), petriNet);
             transitions.put(transition.getId(),transition2D);
             drawables.add(transition2D);

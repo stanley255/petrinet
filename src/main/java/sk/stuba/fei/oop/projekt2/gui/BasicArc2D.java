@@ -16,9 +16,9 @@ public class BasicArc2D extends Line2D.Double implements Drawable {
     private final GeometryUtils geometryUtils = new GeometryUtils();
 
     private final int RADIUS = 15;
-    private final int ARROW_LENGTH = RADIUS;
-    private final int ARROW_WIDTH = 6;
-    private final int TEXT_OFFSET = 7; // TODO: DELETE
+    private final int ARROW_LENGTH = 8;
+    private final int ARROW_WIDTH = 5;
+    private final int RECT_SIZE = 17;
 
     public BasicArc2D(double x1, double y1, double x2, double y2, Short id, int multiplicity, String direction) {
         super(x1, y1, x2, y2);
@@ -59,8 +59,22 @@ public class BasicArc2D extends Line2D.Double implements Drawable {
     }
 
     private void drawWeightToArc(Graphics2D g) {
-        int[] textCoords = geometryUtils.getMiddleCoordinates(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
-        g.drawString(String.valueOf(multiplicity),textCoords[0]-TEXT_OFFSET,textCoords[1]-TEXT_OFFSET);
+        if (multiplicity == 1) {
+            return;
+        }
+        Rectangle2D rect = getWeightBackgroundRectangle();
+        g.fillRect((int)rect.getMinX(),(int)rect.getMinY(), RECT_SIZE, RECT_SIZE);
+        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(multiplicity));
+        int fontHeight =g.getFontMetrics().getFont().getSize()/2;
+        g.setColor(Color.WHITE);
+        g.drawString(String.valueOf(multiplicity),(int)rect.getCenterX()-fontWidth/2,(int)rect.getY()+2*fontHeight);
+    }
+
+    private Rectangle2D.Double getWeightBackgroundRectangle() {
+        int[] lineCenterCoordinates = geometryUtils.getMiddleCoordinates(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
+        int rectX = lineCenterCoordinates[0]- RECT_SIZE /2;
+        int rectY = lineCenterCoordinates[1]- RECT_SIZE /2;
+        return new Rectangle2D.Double(rectX,rectY, RECT_SIZE, RECT_SIZE);
     }
 
 }

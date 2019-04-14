@@ -11,6 +11,8 @@ public class Place2D extends Ellipse2D.Double implements Drawable{
     private String label;
     private Place place;
 
+    private static final int TEXT_OFFSET = 14;
+
     public Place2D(double x, double y, double w, double h, Short id, String label, Place place) {
         super(x, y, w, h);
         this.id = id;
@@ -41,7 +43,7 @@ public class Place2D extends Ellipse2D.Double implements Drawable{
         g.setColor(Color.BLACK);
         int radius = (int)width/2;
         int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(label));
-        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+12);
+        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+TEXT_OFFSET);
     }
 
 }

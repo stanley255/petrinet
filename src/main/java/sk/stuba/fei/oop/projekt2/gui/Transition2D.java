@@ -11,6 +11,8 @@ public class Transition2D extends Rectangle2D.Double implements Drawable, Execut
     private String label;
     private PetriNet petriNet;
 
+    private static final int TEXT_OFFSET = 17;
+
     public Transition2D(double x, double y, double w, double h, Short id, String label, PetriNet petriNet) {
         super(x, y, w, h);
         this.id = id;
@@ -44,7 +46,7 @@ public class Transition2D extends Rectangle2D.Double implements Drawable, Execut
         g.setColor(Color.BLACK);
         int radius = (int)width/2;
         int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(label));
-        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+12);
+        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+ TEXT_OFFSET);
     }
 
 }
