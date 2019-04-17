@@ -1,6 +1,7 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
 import sk.stuba.fei.oop.projekt2.petrinet.PetriNet;
+import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -8,15 +9,15 @@ import java.awt.geom.Rectangle2D;
 public class Transition2D extends Rectangle2D.Double implements Drawable, Executable {
 
     private Short id;
-    private String label;
+    private Transition transition;
     private PetriNet petriNet;
 
     private static final int TEXT_OFFSET = 17;
 
-    public Transition2D(double x, double y, double w, double h, Short id, String label, PetriNet petriNet) {
+    public Transition2D(double x, double y, double w, double h, Transition transition, PetriNet petriNet) {
         super(x, y, w, h);
-        this.id = id;
-        this.label = label;
+        this.id = transition.getId();
+        this.transition = transition;
         this.petriNet = petriNet;
     }
 
@@ -45,8 +46,8 @@ public class Transition2D extends Rectangle2D.Double implements Drawable, Execut
     private void drawLabel(Graphics2D g) {
         g.setColor(Color.BLACK);
         int radius = (int)width/2;
-        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(label));
-        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+ TEXT_OFFSET);
+        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(transition.getName()));
+        g.drawString(String.valueOf(transition.getName()),(int)x+radius-fontWidth/2,(int)getMaxY()+ TEXT_OFFSET);
     }
 
 }

@@ -1,24 +1,20 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
 import javafx.util.Pair;
-import sk.stuba.fei.oop.projekt2.utils.GeometryUtils;
+import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class ResetArc2D extends Line2D.Double implements Drawable {
+public class ResetArc2D extends Arc2D implements Drawable {
 
-    private Short id;
-    private final int RADIUS = 15;
-    private final int ARROW_LENGTH = 8;
-    private final int ARROW_WIDTH = 5;
-    private final GeometryUtils geometryUtils = new GeometryUtils();
+    private ResetArc arc; // Added for future upgrades
 
-    public ResetArc2D(double x1, double y1, double x2, double y2, Short id) {
-        super(x1, y1, x2, y2);
-        this.id = id;
+    public ResetArc2D(double x1, double y1, double x2, double y2, Short id, ResetArc arc) {
+        super(x1, y1, x2, y2,id);
+        this.arc = arc;
     }
 
     @Override

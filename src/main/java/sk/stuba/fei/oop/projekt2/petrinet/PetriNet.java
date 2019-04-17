@@ -52,14 +52,18 @@ public final class PetriNet {
         return canAllArcsConsume(inputArcs);
     }
 
-    public Map<Short, Place> getPlaces() {
-        Map<Short, Place> places = new HashMap<>();
-        for (Map.Entry<Short,Vertex> vertexEntry : this.vertices.entrySet()) {
-            if (vertexEntry.getValue() instanceof Place) {
-                places.put(vertexEntry.getValue().getId(), (Place) vertexEntry.getValue());
-            }
+    public Vertex getVertex(Short vertexID) {
+        if (vertices.containsKey(vertexID)) {
+            return vertices.get(vertexID);
         }
-        return places;
+        throw new IllegalArgumentException("VertexID was not found!");
+    }
+
+    public Arc getArc(Short arcID) {
+        if (arcs.containsKey(arcID)) {
+            return arcs.get(arcID);
+        }
+        throw new IllegalArgumentException("ArcID was not found!");
     }
 
     public boolean fire(Short transitionID) {

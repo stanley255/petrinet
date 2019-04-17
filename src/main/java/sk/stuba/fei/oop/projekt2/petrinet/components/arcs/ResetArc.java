@@ -1,7 +1,10 @@
 package sk.stuba.fei.oop.projekt2.petrinet.components.arcs;
 
+import sk.stuba.fei.oop.projekt2.gui.ResetArc2D;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
+
+import java.lang.reflect.Type;
 
 public final class ResetArc extends Arc<Place,Transition> implements Input {
 
@@ -19,4 +22,5 @@ public final class ResetArc extends Arc<Place,Transition> implements Input {
     public int canConsume() {
         return 0;
     }
+
 }

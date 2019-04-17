@@ -2,6 +2,7 @@ package sk.stuba.fei.oop.projekt2.petrinet.components.vertices;
 
 import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
 
+
 public final class Place extends Vertex {
 
     private int tokenCount;
@@ -41,4 +42,5 @@ public final class Place extends Vertex {
     public String toString() {
         return super.getName()+"["+super.getId()+"]"+" : "+this.getTokenCount();
     }
+
 }

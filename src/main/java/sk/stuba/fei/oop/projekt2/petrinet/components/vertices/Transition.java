@@ -14,4 +14,5 @@ public final class Transition extends Vertex {
     public String toString() {
         return this.getName().equals("") ? Long.toString(this.getId()) : this.getName();
     }
+
 }

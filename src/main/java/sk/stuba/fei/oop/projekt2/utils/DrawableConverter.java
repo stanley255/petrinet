@@ -6,6 +6,9 @@ import sk.stuba.fei.oop.projekt2.generated.Place;
 import sk.stuba.fei.oop.projekt2.generated.Transition;
 import sk.stuba.fei.oop.projekt2.gui.*;
 import sk.stuba.fei.oop.projekt2.petrinet.PetriNet;
+import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicInputArc;
+import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
+import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 
 import java.util.*;
 
@@ -34,9 +37,8 @@ public class DrawableConverter extends Converter<List<Drawable>> {
     }
 
     private void convertPlaces() {
-        Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place> petriPlaces = petriNet.getPlaces();
         for (Place place : document.getPlace()) {
-            Place2D place2D = new Place2D(place.getX(),place.getY(),DIAMETER,DIAMETER,place.getId(),place.getLabel(),petriPlaces.get(place.getId()));
+            Place2D place2D = new Place2D(place.getX(),place.getY(),DIAMETER,DIAMETER,(sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place) petriNet.getVertex(place.getId()));
             places.put(place.getId(),place2D);
             drawables.add(place2D);
         }
@@ -44,7 +46,7 @@ public class DrawableConverter extends Converter<List<Drawable>> {
 
     private void convertTransitions() {
         for (Transition transition : document.getTransition()) {
-            Transition2D transition2D = new Transition2D(transition.getX(),transition.getY(),DIAMETER,DIAMETER,transition.getId(),transition.getLabel(), petriNet);
+            Transition2D transition2D = new Transition2D(transition.getX(),transition.getY(),DIAMETER,DIAMETER, (sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition) petriNet.getVertex(transition.getId()),petriNet);
             transitions.put(transition.getId(),transition2D);
             drawables.add(transition2D);
         }
@@ -65,21 +67,19 @@ public class DrawableConverter extends Converter<List<Drawable>> {
         if (places.containsKey(arc.getSourceId())) {
             Place2D startPoint = places.get(arc.getSourceId());
             Transition2D endPoint = transitions.get(arc.getDestinationId());
-            String direction = "input";
-            basicArc2D = new BasicArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(),arc.getId(),arc.getMultiplicity(),direction);
+            basicArc2D = new BasicInputArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(), (BasicInputArc) petriNet.getArc(arc.getId()));
         } else {
             Transition2D startPoint = transitions.get(arc.getSourceId());
             Place2D endPoint = places.get(arc.getDestinationId());
-            String direction = "output";
-            basicArc2D = new BasicArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(),arc.getId(),arc.getMultiplicity(),direction);
+            basicArc2D = new BasicOutputArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(), (BasicOutputArc) petriNet.getArc(arc.getId()));
         }
-        drawables.add(basicArc2D);
+        drawables.add((Drawable) basicArc2D);
     }
 
     private void convertResetArc(Arc arc) {
         Place2D startPoint = places.get(arc.getSourceId());
         Transition2D endPoint = transitions.get(arc.getDestinationId());
-        ResetArc2D resetArc2D = new ResetArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getY(),arc.getId());
+        ResetArc2D resetArc2D = new ResetArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getY(),arc.getId(), (ResetArc) petriNet.getArc(arc.getId()));
         drawables.add(resetArc2D);
     }
 

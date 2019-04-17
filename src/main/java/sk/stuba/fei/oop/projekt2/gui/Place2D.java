@@ -8,15 +8,13 @@ import java.awt.geom.Ellipse2D;
 public class Place2D extends Ellipse2D.Double implements Drawable{
 
     private Short id;
-    private String label;
     private Place place;
 
     private static final int TEXT_OFFSET = 14;
 
-    public Place2D(double x, double y, double w, double h, Short id, String label, Place place) {
+    public Place2D(double x, double y, double w, double h, Place place) {
         super(x, y, w, h);
-        this.id = id;
-        this.label = label;
+        this.id = place.getId();
         this.place = place;
     }
 
@@ -42,8 +40,8 @@ public class Place2D extends Ellipse2D.Double implements Drawable{
     private void drawLabel(Graphics2D g) {
         g.setColor(Color.BLACK);
         int radius = (int)width/2;
-        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(label));
-        g.drawString(String.valueOf(label),(int)x+radius-fontWidth/2,(int)getMaxY()+TEXT_OFFSET);
+        int fontWidth = g.getFontMetrics().stringWidth(String.valueOf(place.getName()));
+        g.drawString(String.valueOf(place.getName()),(int)x+radius-fontWidth/2,(int)getMaxY()+TEXT_OFFSET);
     }
 
 }
