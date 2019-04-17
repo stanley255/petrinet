@@ -6,7 +6,7 @@ import java.io.File;
 
 public class FileImporter {
 
-    public File loadFile() throws IllegalArgumentException {
+    public File loadFile() throws FileLoadException {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setAcceptAllFileFilterUsed(false);
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("xml files (*.xml)", "xml"));
@@ -14,7 +14,7 @@ public class FileImporter {
         if ((returnValue == JFileChooser.APPROVE_OPTION)) {
             return fileChooser.getSelectedFile();
         }
-        throw new IllegalArgumentException("File was not loaded!");
+        throw new FileLoadException();
     }
 
 }

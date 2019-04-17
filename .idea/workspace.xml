@@ -2,31 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="971a35f5-96e9-4b36-9b98-a32b7becea39" name="Default Changelist" comment="ImportButton added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicInputArc2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicOutputArc2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileLoadException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Place2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Place2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Transition2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Transition2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/PetriNet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/PetriNet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicInputArc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicInputArc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicOutputArc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicOutputArc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/ResetArc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/ResetArc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Place.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Place.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Transition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Transition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/Place2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/Place2D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/Transition2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/gui/Transition2D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/PetriNet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/PetriNet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicInputArc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicInputArc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicOutputArc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicOutputArc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/ResetArc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/ResetArc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Place.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Place.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/FileImporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/FileImporter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,38 +22,34 @@
     <session id="1375021910">
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="187" />
+          <entry key="JAVA" value="196" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7837" />
+          <entry key="JAVA" value="7986" />
           <entry key="PLAIN_TEXT" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="49" column="61" lean-forward="true" selection-start-line="49" selection-start-column="61" selection-end-line="49" selection-end-column="61" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
-                <element signature="e#1048#1049#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="220">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -119,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/MyFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/xmlLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/petriNetParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/Arc.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/arcs/BasicArc.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ImportButton.java" />
@@ -136,11 +113,9 @@
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/Converter.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Shape.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Transitions2D.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Drawable.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/vertices/Vertex.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/PetriNetConverter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Executable.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/PetriNetFrame.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/GraphicallyRepresentable.java" />
@@ -160,6 +135,10 @@
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/PetriNet.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/PetriNetCanvas.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileLoadException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java" />
       </list>
     </option>
   </component>
@@ -170,7 +149,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="444" />
     <option name="y" value="-17" />
     <option name="width" value="1400" />
@@ -184,8 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,11 +218,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555526613241" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555528172403" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test/petrinet2.1" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -312,9 +291,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1716418" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17324094" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -323,7 +301,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32794678" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33745247" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33745247" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2690114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -351,7 +329,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="ImportButton added" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ImportButton.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/exceptions/IllegalArcWeight.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -425,9 +402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#493#494#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,13 +454,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/GraphicallyRepresentable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/petrinet/components/GraphicallyRepresentable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/generated/Document.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
@@ -494,20 +462,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Vertex2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Vertex2D.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -515,9 +474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -525,11 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#246#247#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -558,9 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -568,9 +516,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -595,28 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
-          <folding>
-            <element signature="e#153#154#0" expanded="true" />
-            <element signature="e#220#221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/GeometryUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="37" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="16" column="66" lean-forward="true" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -652,20 +579,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/PetriNetConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1220">
-          <caret line="61" column="65" lean-forward="true" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicOutputArc2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileLoadException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+          <folding>
+            <element signature="e#132#133#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/FileImporter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -676,10 +625,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/PetriNetConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1220">
+          <caret line="61" column="65" lean-forward="true" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ImportNetListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        <state relative-caret-position="245">
+          <caret line="32" column="74" lean-forward="true" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#625#626#0" expanded="true" />
@@ -688,35 +647,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="80">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicOutputArc2D.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="49" column="61" lean-forward="true" selection-start-line="49" selection-start-column="61" selection-end-line="49" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

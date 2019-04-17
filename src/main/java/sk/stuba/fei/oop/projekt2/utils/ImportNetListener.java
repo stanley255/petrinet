@@ -37,7 +37,7 @@ public class ImportNetListener implements ActionListener {
             canvas.setPetriNet(petriNet);
             canvas.setDrawables(drawables);
             canvas.repaint();
-        } catch(IllegalArgumentException exception) {
+        } catch(FileLoadException exception) {
             System.out.println("File was not loaded!");
         } catch (JAXBException exception) {
             System.out.println("XML file could not be loaded!");
