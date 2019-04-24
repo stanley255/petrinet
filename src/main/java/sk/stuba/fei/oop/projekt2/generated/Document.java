@@ -43,6 +43,18 @@ public class Document {
     protected List<Transition> transition;
     protected List<Arc> arc;
 
+    public void setPlace(List<Place> place) {
+        this.place = place;
+    }
+
+    public void setTransition(List<Transition> transition) {
+        this.transition = transition;
+    }
+
+    public void setArc(List<Arc> arc) {
+        this.arc = arc;
+    }
+
     /**
      * Gets the value of the place property.
      * 

@@ -16,6 +16,10 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         this.petriNet = petriNet;
     }
 
+    public PetriNet getPetriNet() {
+        return this.petriNet;
+    }
+
     public void setDrawables(List<Drawable> drawables) {
         this.drawables = drawables;
     }

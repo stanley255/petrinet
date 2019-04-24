@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document>
+    <place>
+        <id>1</id>
+        <x>150</x>
+        <y>70</y>
+        <label></label>
+        <tokens>3</tokens>
+        <static>false</static>
+    </place>
+    <place>
+        <id>3</id>
+        <x>145</x>
+        <y>220</y>
+        <label></label>
+        <tokens>10</tokens>
+        <static>false</static>
+    </place>
+    <transition>
+        <id>2</id>
+        <x>68</x>
+        <y>120</y>
+        <label></label>
+    </transition>
+    <arc>
+        <id>4</id>
+        <type>regular</type>
+        <sourceId>2</sourceId>
+        <destinationId>1</destinationId>
+        <multiplicity>2</multiplicity>
+    </arc>
+    <arc>
+        <id>5</id>
+        <type>reset</type>
+        <sourceId>3</sourceId>
+        <destinationId>2</destinationId>
+        <multiplicity>1</multiplicity>
+    </arc>
+</document>

@@ -1,6 +1,7 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
 import sk.stuba.fei.oop.projekt2.utils.ImportNetListener;
+import sk.stuba.fei.oop.projekt2.utils.ExportNetListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +26,10 @@ public class PetriNetFrame extends JFrame {
         importButton.addActionListener(new ImportNetListener(petriNetCanvas));
         // Added components to panel
         panel.add(importButton);
+        // Added export button
+        Button exportButton = new Button("Export net");
+        exportButton.addActionListener(new ExportNetListener(petriNetCanvas));
+        panel.add(exportButton);
         this.add("North",panel);
         this.add("Center",petriNetCanvas);
         // Setting frame to visible
