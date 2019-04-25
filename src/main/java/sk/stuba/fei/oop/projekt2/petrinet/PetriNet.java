@@ -34,6 +34,10 @@ public final class PetriNet {
         this.arcs.put(arc.getId(),arc);
     }
 
+    public List<Arc> getArcs() {
+        return new ArrayList<Arc>( )
+    }
+
     public void printPlaces() {
         for (Map.Entry<Short,Vertex> shortVertexEntry:this.vertices.entrySet()) {
             Vertex vertex = shortVertexEntry.getValue();

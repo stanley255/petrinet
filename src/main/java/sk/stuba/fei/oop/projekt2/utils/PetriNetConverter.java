@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PetriNetConverter extends Converter<PetriNet> {
+public class PetriNetConverter extends Converter<PetriNet, Document> {
 
     private Document loadedNetDocument;
     private PetriNet petriNet;
