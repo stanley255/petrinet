@@ -50,4 +50,12 @@ public class Transition2D extends Rectangle2D.Double implements Drawable, Execut
         g.drawString(String.valueOf(transition.getName()),(int)x+radius-fontWidth/2,(int)getMaxY()+ TEXT_OFFSET);
     }
 
+    public Short getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return transition.getName();
+    }
+
 }

@@ -22,6 +22,14 @@ public class Place2D extends Ellipse2D.Double implements Drawable{
         return id;
     }
 
+    public String getLabel() {
+        return place.getName();
+    }
+
+    public int getTokens() {
+        return place.getTokenCount();
+    }
+
     @Override
     public void draw(Graphics2D g) {
         g.setColor(new Color(187, 187, 187));

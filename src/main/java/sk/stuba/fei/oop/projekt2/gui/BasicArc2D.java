@@ -1,6 +1,7 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
 import javafx.util.Pair;
+import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.Arc;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -9,6 +10,11 @@ public abstract class BasicArc2D extends Arc2D {
 
     public BasicArc2D(double x1, double y1, double x2, double y2, Short id) {
         super(x1, y1, x2, y2, id);
+    }
+
+    @Override
+    public String getType() {
+        return "regular";
     }
 
     protected void drawArrowLine(Graphics g, int x1, int y1, int x2, int y2) {

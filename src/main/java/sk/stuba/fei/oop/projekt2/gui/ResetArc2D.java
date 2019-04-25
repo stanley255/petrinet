@@ -18,6 +18,16 @@ public class ResetArc2D extends Arc2D implements Drawable {
     }
 
     @Override
+    public String getType() {
+        return "reset";
+    }
+
+    @Override
+    public int getMultiplicity() {
+        return 1;
+    }
+
+    @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.BLACK);
         Line2D.Double l = new Line2D.Double(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);

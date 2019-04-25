@@ -5,7 +5,9 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.*;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.*;
 import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
 
+import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public final class PetriNet {
 
@@ -34,9 +36,20 @@ public final class PetriNet {
         this.arcs.put(arc.getId(),arc);
     }
 
-    public List<Arc> getArcs() {
-        return new ArrayList<Arc>( )
+    /*public List<Arc> getArcs() {
+        return new ArrayList<Arc>(arcs.values());
     }
+
+    public <T> List<T> getFilteredVertices(Class<T> filterClass) {
+        List<T> filteredVertices = new ArrayList<>();
+        for (Map.Entry<Short,Vertex> shortVertexMap:vertices.entrySet()) {
+            Vertex vertex = shortVertexMap.getValue();
+            if (filterClass.isInstance(vertex)) {
+                filteredVertices.add((T)vertex);
+            }
+        }
+        return filteredVertices;
+    }*/
 
     public void printPlaces() {
         for (Map.Entry<Short,Vertex> shortVertexEntry:this.vertices.entrySet()) {

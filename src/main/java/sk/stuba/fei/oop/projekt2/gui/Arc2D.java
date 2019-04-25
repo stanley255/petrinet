@@ -18,4 +18,12 @@ public abstract class Arc2D extends Line2D.Double {
         super(x1, y1, x2, y2);
         this.id = id;
     }
+
+    public abstract String getType();
+
+    public abstract int getMultiplicity();
+
+    public Short getId() {
+        return id;
+    }
 }

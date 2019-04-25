@@ -30,19 +30,13 @@ public class ExportNetListener implements ActionListener {
             if (!(returnValue == JFileChooser.APPROVE_OPTION)) {
                 return;
             }
-            // TODO Nahrad aktualnou petri sietou
-            File loadedXML = new FileImporter().loadFile();
-            Document document = new DocumentLoader().loadDocumentFromXML(loadedXML);
 
-            Document exportDocument = new Document();
-            exportDocument.setArc(document.getArc());
-            exportDocument.setPlace(document.getPlace());
-            exportDocument.setTransition(document.getTransition());
+            DocumentConverter documentConverter = new DocumentConverter();
+
             JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
-
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(exportDocument, fileChooser.getSelectedFile().getAbsoluteFile());
+            marshaller.marshal(documentConverter.convert(canvas.getDrawables()), fileChooser.getSelectedFile().getAbsoluteFile());
         } catch (FileLoadException | JAXBException excp) {
             System.out.println("File was not exported!");
         }

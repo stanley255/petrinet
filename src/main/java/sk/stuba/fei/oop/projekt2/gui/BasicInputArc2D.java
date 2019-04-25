@@ -23,6 +23,11 @@ public class BasicInputArc2D extends BasicArc2D implements Drawable {
         super.drawWeightToArc(g, arc.getWeight());
     }
 
+    @Override
+    public int getMultiplicity() {
+        return arc.getWeight();
+    }
+
     private void drawArrowLineToRectangle(Graphics2D g) {
         Line2D.Double l = new Line2D.Double(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
         Rectangle2D.Double rectangle = new Rectangle2D.Double(x2,y2,2*RADIUS,2*RADIUS);

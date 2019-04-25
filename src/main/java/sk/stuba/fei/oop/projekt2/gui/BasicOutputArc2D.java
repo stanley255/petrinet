@@ -20,6 +20,11 @@ public class BasicOutputArc2D extends BasicArc2D implements Drawable {
         drawWeightToArc(g, arc.getWeight());
     }
 
+    @Override
+    public int getMultiplicity() {
+        return arc.getWeight();
+    }
+
     private void drawArrowLineToEllipse(Graphics2D g) {
         int[] newCoords = geometryUtils.getOffsetCoordinates((int)x1+RADIUS,(int)y1+RADIUS,(int)x2+RADIUS,(int)y2+RADIUS,RADIUS);
         drawArrowLine(g,(int)x1+RADIUS,(int)y1+RADIUS,newCoords[0],newCoords[1]);
