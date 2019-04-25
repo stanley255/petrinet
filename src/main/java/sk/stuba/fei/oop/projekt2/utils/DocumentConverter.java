@@ -34,8 +34,8 @@ class DocumentConverter extends Converter<Document, List<Drawable>> {
             documentArc.setId(arc.getId());
             documentArc.setType(arc.getType());
             documentArc.setMultiplicity((short) arc.getMultiplicity());
-            documentArc.setSourceId((short) 1); // TODO
-            documentArc.setDestinationId((short) 1); // TODO
+            documentArc.setSourceId(arc.getSourceId());
+            documentArc.setDestinationId(arc.getDestinationId());
             documentArcs.add(documentArc);
         }
         return documentArcs;

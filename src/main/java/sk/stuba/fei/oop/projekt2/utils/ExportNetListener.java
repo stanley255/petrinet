@@ -4,14 +4,11 @@ import sk.stuba.fei.oop.projekt2.generated.Document;
 import sk.stuba.fei.oop.projekt2.gui.PetriNetCanvas;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 public class ExportNetListener implements ActionListener {
 
@@ -37,7 +34,7 @@ public class ExportNetListener implements ActionListener {
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(documentConverter.convert(canvas.getDrawables()), fileChooser.getSelectedFile().getAbsoluteFile());
-        } catch (FileLoadException | JAXBException excp) {
+        } catch (FileLoadException | JAXBException exc) {
             System.out.println("File was not exported!");
         }
     }

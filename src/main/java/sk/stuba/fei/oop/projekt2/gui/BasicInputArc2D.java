@@ -11,8 +11,8 @@ public class BasicInputArc2D extends BasicArc2D implements Drawable {
 
     private BasicInputArc arc;
 
-    public BasicInputArc2D(double x1, double y1, double x2, double y2, BasicInputArc arc) {
-        super(x1, y1, x2, y2, arc.getId());
+    public BasicInputArc2D(double x1, double y1, double x2, double y2, Short sourceId, Short destinationId, BasicInputArc arc) {
+        super(x1, y1, x2, y2, arc.getId(), sourceId, destinationId);
         this.arc = arc;
     }
 

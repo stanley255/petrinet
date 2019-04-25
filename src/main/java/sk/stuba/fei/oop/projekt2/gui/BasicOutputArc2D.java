@@ -8,8 +8,8 @@ public class BasicOutputArc2D extends BasicArc2D implements Drawable {
 
     private BasicOutputArc arc;
 
-    public BasicOutputArc2D(double x1, double y1, double x2, double y2, BasicOutputArc arc) {
-        super(x1, y1, x2, y2, arc.getId());
+    public BasicOutputArc2D(double x1, double y1, double x2, double y2, Short sourceId, Short destinationId, BasicOutputArc arc) {
+        super(x1, y1, x2, y2, arc.getId(), sourceId, destinationId);
         this.arc = arc;
     }
 

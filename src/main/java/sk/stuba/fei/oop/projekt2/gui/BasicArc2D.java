@@ -8,8 +8,8 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class BasicArc2D extends Arc2D {
 
-    public BasicArc2D(double x1, double y1, double x2, double y2, Short id) {
-        super(x1, y1, x2, y2, id);
+    public BasicArc2D(double x1, double y1, double x2, double y2, Short id, Short sourceId, Short destinationId) {
+        super(x1, y1, x2, y2, id, sourceId, destinationId);
     }
 
     @Override

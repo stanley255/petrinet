@@ -12,8 +12,8 @@ public class ResetArc2D extends Arc2D implements Drawable {
 
     private ResetArc arc; // Added for future upgrades
 
-    public ResetArc2D(double x1, double y1, double x2, double y2, Short id, ResetArc arc) {
-        super(x1, y1, x2, y2,id);
+    public ResetArc2D(double x1, double y1, double x2, double y2, Short id, Short sourceId, Short destinationId, ResetArc arc) {
+        super(x1, y1, x2, y2,id, sourceId, destinationId);
         this.arc = arc;
     }
 
