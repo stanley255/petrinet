@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="971a35f5-96e9-4b36-9b98-a32b7becea39" name="Default Changelist" comment="ImportButton added">
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicArc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicInputArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicInputArc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicOutputArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/BasicOutputArc2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,32 +16,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1593579673">
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="27" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="3017" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="182">
+              <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#535#536#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,8 +132,8 @@
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/ResetArc2D.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DrawableConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/gui/Arc2D.java" />
-        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java" />
       </list>
     </option>
   </component>
@@ -166,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -232,10 +223,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556219853302" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556255326602" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -302,10 +294,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18123667" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18381241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -314,7 +306,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32794678" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33745247" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33494365" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2690114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -511,13 +503,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="341" column="18" selection-start-line="341" selection-start-column="18" selection-end-line="341" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/Map.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/PetriNetConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -676,17 +662,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/DocumentConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+        <state relative-caret-position="102">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sk/stuba/fei/oop/projekt2/utils/ExportNetListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="182">
+          <caret line="23" column="58" lean-forward="true" selection-start-line="23" selection-start-column="58" selection-end-line="23" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
           </folding>
         </state>
       </provider>

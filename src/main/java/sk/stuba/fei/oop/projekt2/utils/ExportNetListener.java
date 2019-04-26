@@ -27,14 +27,13 @@ public class ExportNetListener implements ActionListener {
             if (!(returnValue == JFileChooser.APPROVE_OPTION)) {
                 return;
             }
-
             DocumentConverter documentConverter = new DocumentConverter();
-
             JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(documentConverter.convert(canvas.getDrawables()), fileChooser.getSelectedFile().getAbsoluteFile());
-        } catch (FileLoadException | JAXBException exc) {
+            System.out.println("File was exported successfully!");
+        } catch (FileLoadException | IllegalArgumentException | JAXBException exc) {
             System.out.println("File was not exported!");
         }
     }

@@ -17,13 +17,23 @@ class DocumentConverter extends Converter<Document, List<Drawable>> {
     private List<Drawable> drawables;
 
     @Override
-    Document convert(List<Drawable> drawables) {
-        this.drawables = drawables;
+    Document convert(List<Drawable> drawables) throws IllegalArgumentException {
+        this.setDrawables(drawables);
         Document document = new Document();
         document.setTransition(getConvertedTransitions());
         document.setPlace(getConvertedPlaces());
         document.setArc(getConvertedArcs());
         return document;
+    }
+
+    private void setDrawables(List<Drawable> drawables) throws IllegalArgumentException {
+        if (drawables == null) {
+            throw new IllegalArgumentException("Drawables cannot be null!");
+        }
+        if (drawables.isEmpty()) {
+            throw new IllegalArgumentException("Drawables cannot be empty!");
+        }
+        this.drawables = drawables;
     }
 
     private List<Arc> getConvertedArcs() {
