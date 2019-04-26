@@ -3,7 +3,6 @@ package sk.stuba.fei.oop.projekt2.utils;
 import sk.stuba.fei.oop.projekt2.generated.Document;
 import sk.stuba.fei.oop.projekt2.gui.PetriNetCanvas;
 
-import javax.swing.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -21,17 +20,11 @@ public class ExportNetListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            int returnValue = fileChooser.showOpenDialog(null);
-            if (!(returnValue == JFileChooser.APPROVE_OPTION)) {
-                return;
-            }
             DocumentConverter documentConverter = new DocumentConverter();
             JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(documentConverter.convert(canvas.getDrawables()), fileChooser.getSelectedFile().getAbsoluteFile());
+            marshaller.marshal(documentConverter.convert(canvas.getDrawables()), new FileImporter().loadFile());
             System.out.println("File was exported successfully!");
         } catch (FileLoadException | IllegalArgumentException | JAXBException exc) {
             System.out.println("File was not exported!");

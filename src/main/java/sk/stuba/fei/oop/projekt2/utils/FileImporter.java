@@ -12,9 +12,16 @@ public class FileImporter {
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("xml files (*.xml)", "xml"));
         int returnValue = fileChooser.showOpenDialog(null);
         if ((returnValue == JFileChooser.APPROVE_OPTION)) {
-            return fileChooser.getSelectedFile();
+            return appendSuffixToFile(fileChooser.getSelectedFile(),".xml");
         }
         throw new FileLoadException();
+    }
+
+    private File appendSuffixToFile(File file, String suffix) {
+        if (!file.getAbsolutePath().endsWith(suffix)) {
+            return new File(file.getAbsolutePath()+suffix);
+        }
+        return file;
     }
 
 }
