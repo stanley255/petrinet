@@ -27,6 +27,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     private Transition2D startPointTransition;
 
     private final int DIAMETER = 30;
+    private final int RADIUS = 15;
 
     public PetriNetCanvas() {
         this.petriNet = new PetriNet();
@@ -124,7 +125,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
             Transition2D transition = (Transition2D) drawable;
             BasicInputArc arc = new BasicInputArc(startPointPlace.getPlace(),transition.getTransition());
             petriNet.add(arc);
-            BasicInputArc2D arc2D = new BasicInputArc2D(startPointPlace.getX(),startPointPlace.getY(),transition.getX(),transition.getY(),startPointPlace.getId(),transition.getId(),arc);
+            BasicInputArc2D arc2D = new BasicInputArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition.getX()+RADIUS,transition.getY()+RADIUS,startPointPlace.getId(),transition.getId(),arc);
             drawables.add(arc2D);
             repaint();
         } catch (ClassCastException e) {
@@ -137,7 +138,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
             Place2D place = (Place2D) drawable;
             BasicOutputArc arc = new BasicOutputArc(startPointTransition.getTransition(),place.getPlace());
             petriNet.add(arc);
-            BasicOutputArc2D arc2D = new BasicOutputArc2D(startPointTransition.getX(),startPointTransition.getY(),place.getX(),place.getY(),startPointTransition.getId(),place.getId(),arc);
+            BasicOutputArc2D arc2D = new BasicOutputArc2D(startPointTransition.getX()+RADIUS,startPointTransition.getY()+RADIUS,place.getX()+RADIUS,place.getY()+RADIUS,startPointTransition.getId(),place.getId(),arc);
             drawables.add(arc2D);
             repaint();
         } catch (ClassCastException e) {
@@ -204,7 +205,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
             Transition2D transition2D = (Transition2D) drawable;
             ResetArc resetArc = new ResetArc(startPointPlace.getPlace(),transition2D.getTransition());
             petriNet.add(resetArc);
-            ResetArc2D resetArc2D = new ResetArc2D(startPointPlace.getX(),startPointPlace.getY(),transition2D.getX(),transition2D.getY(),resetArc.getId(),startPointPlace.getId(),transition2D.getId(),resetArc);
+            ResetArc2D resetArc2D = new ResetArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition2D.getX()+RADIUS,transition2D.getY()+RADIUS,resetArc.getId(),startPointPlace.getId(),transition2D.getId(),resetArc);
             drawables.add(resetArc2D);
             repaint();
         } catch (ClassCastException e) {
@@ -223,23 +224,20 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     }
 
     private void delete(MouseEvent e) {
+        Rectangle2D.Double deleteLineRectangle = new Rectangle2D.Double(e.getX()-5,e.getY()-5,10,10);
         for (Drawable drawable : drawables) {
             if (isVertex(drawable)) {
                 // Drawable is Vertex
                 if (drawable.contains(e.getX(),e.getY())) {
-                    System.out.println("Delete Vertex");
                     repaint();
                     break;
                 }
             } else {
-                if (drawable.intersects(new Rectangle2D.Double(e.getX()-10,e.getY()-10,10,10))) {
+                if (drawable.intersects(deleteLineRectangle)) {
                     // Drawable is Arc
-                    System.out.println("Delete Arc");
                     deleteArc(drawable);
                     repaint();
                     break;
-                } else {
-                    System.out.println("No intersection");
                 }
             }
 

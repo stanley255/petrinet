@@ -29,10 +29,11 @@ public class BasicInputArc2D extends BasicArc2D implements Drawable {
     }
 
     private void drawArrowLineToRectangle(Graphics2D g) {
-        Line2D.Double l = new Line2D.Double(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
-        Rectangle2D.Double rectangle = new Rectangle2D.Double(x2,y2,2*RADIUS,2*RADIUS);
+        Line2D.Double l = new Line2D.Double(x1,y1,x2,y2);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(x2-RADIUS,y2-RADIUS,2*RADIUS,2*RADIUS);
         Point2D.Double p = geometryUtils.getIntersectionPoint(l,rectangle);
-        super.drawArrowLine(g,(int)x1+RADIUS,(int)y1+RADIUS,(int)p.getX(),(int)p.getY());
+        int[] newStartCoords = geometryUtils.getOffsetCoordinates((int)x2,(int)y2,(int)x1,(int)y1,RADIUS);
+        super.drawArrowLine(g,newStartCoords[0],newStartCoords[1],(int)p.getX(),(int)p.getY());
     }
 
 }

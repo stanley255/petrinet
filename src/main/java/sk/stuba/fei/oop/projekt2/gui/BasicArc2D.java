@@ -38,7 +38,7 @@ public abstract class BasicArc2D extends Arc2D {
     }
 
     protected Rectangle2D.Double getWeightBackgroundRectangle() {
-        int[] lineCenterCoordinates = geometryUtils.getMiddleCoordinates(x1+RADIUS,y1+RADIUS,x2+RADIUS,y2+RADIUS);
+        int[] lineCenterCoordinates = geometryUtils.getMiddleCoordinates(x1,y1,x2,y2);
         int rectX = lineCenterCoordinates[0]- RECT_SIZE /2;
         int rectY = lineCenterCoordinates[1]- RECT_SIZE /2;
         return new Rectangle2D.Double(rectX,rectY, RECT_SIZE, RECT_SIZE);

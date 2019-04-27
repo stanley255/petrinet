@@ -20,6 +20,7 @@ public class DrawableConverter extends Converter<List<Drawable>, Document> {
     private Map<Short,Transition2D> transitions = new HashMap<>();
     private PetriNet petriNet;
 
+    private final int RADIUS = 15;
     private final int DIAMETER = 30;
 
     @Override
@@ -67,11 +68,11 @@ public class DrawableConverter extends Converter<List<Drawable>, Document> {
         if (places.containsKey(arc.getSourceId())) {
             Place2D startPoint = places.get(arc.getSourceId());
             Transition2D endPoint = transitions.get(arc.getDestinationId());
-            basicArc2D = new BasicInputArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(),startPoint.getId(),endPoint.getId(),(BasicInputArc) petriNet.getArc(arc.getId()));
+            basicArc2D = new BasicInputArc2D(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getMinY()+RADIUS,startPoint.getId(),endPoint.getId(),(BasicInputArc) petriNet.getArc(arc.getId()));
         } else {
             Transition2D startPoint = transitions.get(arc.getSourceId());
             Place2D endPoint = places.get(arc.getDestinationId());
-            basicArc2D = new BasicOutputArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getMinY(),startPoint.getId(),endPoint.getId(),(BasicOutputArc) petriNet.getArc(arc.getId()));
+            basicArc2D = new BasicOutputArc2D(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getMinY()+RADIUS,startPoint.getId(),endPoint.getId(),(BasicOutputArc) petriNet.getArc(arc.getId()));
         }
         drawables.add((Drawable) basicArc2D);
     }
@@ -79,7 +80,7 @@ public class DrawableConverter extends Converter<List<Drawable>, Document> {
     private void convertResetArc(Arc arc) {
         Place2D startPoint = places.get(arc.getSourceId());
         Transition2D endPoint = transitions.get(arc.getDestinationId());
-        ResetArc2D resetArc2D = new ResetArc2D(startPoint.getX(),startPoint.getY(),endPoint.getX(),endPoint.getY(),arc.getId(),startPoint.getId(),endPoint.getId(),(ResetArc) petriNet.getArc(arc.getId()));
+        ResetArc2D resetArc2D = new ResetArc2D(startPoint.getX()+RADIUS,startPoint.getY()+RADIUS,endPoint.getX()+RADIUS,endPoint.getY()+RADIUS,arc.getId(),startPoint.getId(),endPoint.getId(),(ResetArc) petriNet.getArc(arc.getId()));
         drawables.add(resetArc2D);
     }
 
