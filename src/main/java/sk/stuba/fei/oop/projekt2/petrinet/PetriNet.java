@@ -36,20 +36,9 @@ public final class PetriNet {
         this.arcs.put(arc.getId(),arc);
     }
 
-    /*public List<Arc> getArcs() {
-        return new ArrayList<Arc>(arcs.values());
+    public void deleteArc(Short id) {
+        this.arcs.remove(id);
     }
-
-    public <T> List<T> getFilteredVertices(Class<T> filterClass) {
-        List<T> filteredVertices = new ArrayList<>();
-        for (Map.Entry<Short,Vertex> shortVertexMap:vertices.entrySet()) {
-            Vertex vertex = shortVertexMap.getValue();
-            if (filterClass.isInstance(vertex)) {
-                filteredVertices.add((T)vertex);
-            }
-        }
-        return filteredVertices;
-    }*/
 
     public void printPlaces() {
         for (Map.Entry<Short,Vertex> shortVertexEntry:this.vertices.entrySet()) {

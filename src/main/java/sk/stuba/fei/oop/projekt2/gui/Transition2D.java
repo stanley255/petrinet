@@ -21,6 +21,10 @@ public class Transition2D extends Rectangle2D.Double implements Drawable, Execut
         this.petriNet = petriNet;
     }
 
+    public Transition getTransition() {
+        return transition;
+    }
+
     @Override
     public void onClick() {
         petriNet.fire(id);

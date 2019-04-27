@@ -1,4 +1,4 @@
-package sk.stuba.fei.oop.projekt2.utils;
+package sk.stuba.fei.oop.projekt2.utils.converters;
 
 import sk.stuba.fei.oop.projekt2.generated.Arc;
 import sk.stuba.fei.oop.projekt2.generated.Transition;
@@ -25,7 +25,7 @@ public class PetriNetConverter extends Converter<PetriNet, Document> {
     private Map<Short, sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition> transitions;
 
     @Override
-    PetriNet convert(Document document) throws FailedNetConversion {
+    public PetriNet convert(Document document) throws FailedNetConversion {
         this.loadedNetDocument = document;
         this.petriNet = new PetriNet();
         this.places = new HashMap<>();

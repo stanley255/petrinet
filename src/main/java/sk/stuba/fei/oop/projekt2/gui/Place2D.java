@@ -30,6 +30,10 @@ public class Place2D extends Ellipse2D.Double implements Drawable{
         return place.getTokenCount();
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
     @Override
     public void draw(Graphics2D g) {
         g.setColor(new Color(187, 187, 187));

@@ -1,4 +1,4 @@
-package sk.stuba.fei.oop.projekt2.utils;
+package sk.stuba.fei.oop.projekt2.utils.converters;
 
 import sk.stuba.fei.oop.projekt2.generated.Arc;
 import sk.stuba.fei.oop.projekt2.generated.Document;
@@ -12,12 +12,12 @@ import sk.stuba.fei.oop.projekt2.gui.Transition2D;
 import java.util.ArrayList;
 import java.util.List;
 
-class DocumentConverter extends Converter<Document, List<Drawable>> {
+public class DocumentConverter extends Converter<Document, List<Drawable>> {
 
     private List<Drawable> drawables;
 
     @Override
-    Document convert(List<Drawable> drawables) throws IllegalArgumentException {
+    public Document convert(List<Drawable> drawables) throws IllegalArgumentException {
         this.setDrawables(drawables);
         Document document = new Document();
         document.setTransition(getConvertedTransitions());

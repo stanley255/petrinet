@@ -1,4 +1,4 @@
-package sk.stuba.fei.oop.projekt2.utils;
+package sk.stuba.fei.oop.projekt2.utils.converters;
 
 import sk.stuba.fei.oop.projekt2.generated.Arc;
 import sk.stuba.fei.oop.projekt2.generated.Document;
@@ -23,7 +23,7 @@ public class DrawableConverter extends Converter<List<Drawable>, Document> {
     private final int DIAMETER = 30;
 
     @Override
-    List<Drawable> convert(Document document) {
+    public List<Drawable> convert(Document document) {
         this.document = document;
         convertPlaces();
         convertTransitions();
