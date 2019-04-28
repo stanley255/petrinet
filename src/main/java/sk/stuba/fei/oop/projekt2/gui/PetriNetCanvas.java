@@ -8,6 +8,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Vertex;
+import sk.stuba.fei.oop.projekt2.utils.GuiObjectsManipulator;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,19 +23,13 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     private PetriNet petriNet;
     private List<Drawable> drawables;
     private String currentAction;
-
-    private Place2D startPointPlace;
-    private Transition2D startPointTransition;
-
-    private final int DIAMETER = 30;
-    private final int RADIUS = 15;
+    private GuiObjectsManipulator guiObjectsManipulator;
 
     public PetriNetCanvas() {
         this.petriNet = new PetriNet();
         this.drawables = new ArrayList<>();
         this.currentAction = "play";
-        this.startPointPlace = null;
-        this.startPointTransition = null;
+        this.guiObjectsManipulator = new GuiObjectsManipulator(this);
     }
 
     public void setCurrentAction(String currentAction) {
@@ -45,203 +40,16 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         this.petriNet = petriNet;
     }
 
+    public PetriNet getPetriNet() {
+        return this.petriNet;
+    }
+
     public void setDrawables(List<Drawable> drawables) {
         this.drawables = drawables;
     }
 
     public List<Drawable> getDrawables() {
         return drawables;
-    }
-
-    private void execute(MouseEvent e) {
-        if (drawables == null) { return; }
-        for (Drawable drawable : drawables) {
-            if (!drawable.contains(e.getX(),e.getY())) { continue; }
-            if (drawable instanceof Executable) {
-                ((Executable) drawable).onClick();
-                repaint();
-            }
-        }
-    }
-
-    private void addTransition(MouseEvent e) {
-        Transition transition = new Transition();
-        petriNet.add(transition);
-        Transition2D transition2D = new Transition2D(e.getX()-DIAMETER/2,e.getY()-DIAMETER/2,DIAMETER,DIAMETER,transition,petriNet);
-        drawables.add(transition2D);
-        repaint();
-    }
-
-    private void addPlace(MouseEvent e) {
-        Place place = new Place();
-        petriNet.add(place);
-        Place2D place2D = new Place2D(e.getX()-DIAMETER/2,e.getY()-DIAMETER/2,DIAMETER,DIAMETER,place);
-        drawables.add(place2D);
-        repaint();
-    }
-
-    private boolean isVertex(Drawable drawable) {
-        try {
-            Place2D place = (Place2D) drawable;
-            return true;
-        } catch (ClassCastException ex1) {
-            try {
-                Transition2D transition = (Transition2D) drawable;
-                return true;
-            } catch (ClassCastException ex2) {
-                return false;
-            }
-        }
-    }
-
-    private void serveFirstBasicArcClick(Drawable drawable) {
-        System.out.println("1. click");
-        try {
-            startPointPlace = (Place2D) drawable;
-            startPointTransition = null;
-            System.out.println("Place was set as input");
-        } catch (ClassCastException ex) {
-            startPointTransition = (Transition2D) drawable;
-            startPointPlace = null;
-            System.out.println("Transition was set as input");
-        }
-    }
-
-    private void serveSecondBasicArcClick(Drawable drawable) {
-        System.out.println("2. click");
-        if (startPointPlace != null) {
-            // Create BasicInputArc
-            addBasicInputArc(drawable);
-        } else if (startPointTransition != null) {
-            // Create BasicOutputArc
-            addBasicOutputArc(drawable);
-        }
-        startPointTransition = null;
-        startPointPlace = null;
-    }
-
-    private void addBasicInputArc(Drawable drawable) {
-        try {
-            Transition2D transition = (Transition2D) drawable;
-            BasicInputArc arc = new BasicInputArc(startPointPlace.getPlace(),transition.getTransition());
-            petriNet.add(arc);
-            BasicInputArc2D arc2D = new BasicInputArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition.getX()+RADIUS,transition.getY()+RADIUS,startPointPlace.getId(),transition.getId(),arc);
-            drawables.add(arc2D);
-            repaint();
-        } catch (ClassCastException e) {
-            e.getMessage(); // Ignored
-        }
-    }
-
-    private void addBasicOutputArc(Drawable drawable) {
-        try {
-            Place2D place = (Place2D) drawable;
-            BasicOutputArc arc = new BasicOutputArc(startPointTransition.getTransition(),place.getPlace());
-            petriNet.add(arc);
-            BasicOutputArc2D arc2D = new BasicOutputArc2D(startPointTransition.getX()+RADIUS,startPointTransition.getY()+RADIUS,place.getX()+RADIUS,place.getY()+RADIUS,startPointTransition.getId(),place.getId(),arc);
-            drawables.add(arc2D);
-            repaint();
-        } catch (ClassCastException e) {
-            e.getMessage(); // Ignored
-        }
-    }
-
-    private void addArc(MouseEvent e) {
-        for (Drawable drawable : drawables) {
-            if (drawable.contains(e.getX(),e.getY())) {
-                // Verify if clicked drawable is vertex => can be connected
-                if (!isVertex(drawable)) {
-                    startPointPlace = null;
-                    startPointTransition = null;
-                    return;
-                }
-                // If First time clicked Else Second time clicked
-                if (startPointPlace==null && startPointTransition==null) {
-                    serveFirstBasicArcClick(drawable);
-                    return;
-                } else {
-                    serveSecondBasicArcClick(drawable);
-                    return;
-                }
-            }
-        }
-        startPointPlace = null;
-        startPointTransition = null;
-    }
-
-    private void addResetArc(MouseEvent e) {
-        for (Drawable drawable : drawables) {
-            if (drawable.contains(e.getX(),e.getY())) {
-                // Verify if clicked drawable is vertex => can be connected
-                if (!isVertex(drawable)) {
-                    startPointPlace = null;
-                    startPointTransition = null;
-                    break;
-                }
-                // If First time clicked Else Second time clicked
-                if (startPointPlace==null) {
-                    serveFirstResetArcClick(drawable);
-                    break;
-                } else {
-                    serveSecondResetArcClick(drawable);
-                    break;
-                }
-            }
-        }
-    }
-
-    private void serveFirstResetArcClick(Drawable drawable) {
-        try {
-            startPointTransition = null;
-            startPointPlace = (Place2D) drawable;
-            System.out.println("Place was set as reset input");
-        } catch (ClassCastException e) {
-            startPointPlace = null;
-        }
-    }
-
-    private void serveSecondResetArcClick(Drawable drawable) {
-        try {
-            Transition2D transition2D = (Transition2D) drawable;
-            ResetArc resetArc = new ResetArc(startPointPlace.getPlace(),transition2D.getTransition());
-            petriNet.add(resetArc);
-            ResetArc2D resetArc2D = new ResetArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition2D.getX()+RADIUS,transition2D.getY()+RADIUS,resetArc.getId(),startPointPlace.getId(),transition2D.getId(),resetArc);
-            drawables.add(resetArc2D);
-            repaint();
-        } catch (ClassCastException e) {
-            e.getMessage(); // Ignored
-        }
-        startPointPlace = null;
-        startPointTransition = null;
-    }
-
-    private void deleteArc(Drawable drawable) {
-        // Delete from Drawables
-        drawables.remove(drawable);
-        // Delete from PetriNet
-        Arc2D arc2D = (Arc2D) drawable;
-        petriNet.deleteArc(arc2D.getId());
-    }
-
-    private void delete(MouseEvent e) {
-        Rectangle2D.Double deleteLineRectangle = new Rectangle2D.Double(e.getX()-5,e.getY()-5,10,10);
-        for (Drawable drawable : drawables) {
-            if (isVertex(drawable)) {
-                // Drawable is Vertex
-                if (drawable.contains(e.getX(),e.getY())) {
-                    repaint();
-                    break;
-                }
-            } else {
-                if (drawable.intersects(deleteLineRectangle)) {
-                    // Drawable is Arc
-                    deleteArc(drawable);
-                    repaint();
-                    break;
-                }
-            }
-
-        }
     }
 
     @Override
@@ -255,36 +63,29 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (!this.currentAction.toLowerCase().equals("add arc") && !this.currentAction.toLowerCase().equals("add reset arc")) {
+            guiObjectsManipulator.setStartPointPlace(null);
+            guiObjectsManipulator.setStartPointTransition(null);
+        }
         switch(this.currentAction.toLowerCase()) {
             case "add transition":
-                startPointPlace = null;
-                startPointTransition = null;
-                addTransition(e);
+                guiObjectsManipulator.addTransition(e);
                 break;
             case "add place":
-                startPointPlace = null;
-                startPointTransition = null;
-                addPlace(e);
+                guiObjectsManipulator.addPlace(e);
                 break;
             case "add arc":
-                addArc(e);
+                guiObjectsManipulator.addArc(e);
                 break;
             case "add reset arc":
-                addResetArc(e);
+                guiObjectsManipulator.addResetArc(e);
                 break;
             case "delete":
-                startPointPlace = null;
-                startPointTransition = null;
-                delete(e);
+                guiObjectsManipulator.delete(e);
                 break;
             case "play":
-                startPointPlace = null;
-                startPointTransition = null;
-                execute(e);
+                guiObjectsManipulator.execute(e);
                 break;
-            default:
-                startPointPlace = null;
-                startPointTransition = null;
         }
     }
 

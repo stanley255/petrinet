@@ -6,7 +6,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
-public class Transition2D extends Rectangle2D.Double implements Drawable, Executable {
+public class Transition2D extends Rectangle2D.Double implements Drawable, Executable, Identifiable {
 
     private Short id;
     private Transition transition;

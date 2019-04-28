@@ -3,6 +3,9 @@ package sk.stuba.fei.oop.projekt2.gui;
 import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 public class BasicOutputArc2D extends BasicArc2D implements Drawable {
 
@@ -27,7 +30,10 @@ public class BasicOutputArc2D extends BasicArc2D implements Drawable {
 
     private void drawArrowLineToEllipse(Graphics2D g) {
         int[] newCoords = geometryUtils.getOffsetCoordinates((int)x1,(int)y1,(int)x2,(int)y2,RADIUS);
-        drawArrowLine(g,(int)x1,(int)y1,newCoords[0],newCoords[1]);
+        Line2D.Double l = new Line2D.Double(x2,y2,x1,y1);
+        Rectangle2D.Double rectangle = new Rectangle2D.Double(x1-RADIUS,y1-RADIUS,2*RADIUS,2*RADIUS);
+        Point2D.Double p = geometryUtils.getIntersectionPoint(l,rectangle);
+        drawArrowLine(g,(int)p.getX(),(int)p.getY(),newCoords[0],newCoords[1]);
     }
 
 }

@@ -29,7 +29,6 @@ public class DrawableConverter extends Converter<List<Drawable>, Document> {
         convertPlaces();
         convertTransitions();
         convertArcs();
-        Collections.reverse(drawables);
         return drawables;
     }
 

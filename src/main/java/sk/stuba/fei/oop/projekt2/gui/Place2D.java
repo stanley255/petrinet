@@ -5,7 +5,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
-public class Place2D extends Ellipse2D.Double implements Drawable{
+public class Place2D extends Ellipse2D.Double implements Drawable, Identifiable {
 
     private Short id;
     private Place place;

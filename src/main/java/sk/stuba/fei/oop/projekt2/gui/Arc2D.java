@@ -4,7 +4,7 @@ import sk.stuba.fei.oop.projekt2.utils.GeometryUtils;
 
 import java.awt.geom.Line2D;
 
-public abstract class Arc2D extends Line2D.Double {
+public abstract class Arc2D extends Line2D.Double implements Identifiable {
 
     protected Short id;
     protected Short sourceId;

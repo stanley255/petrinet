@@ -37,7 +37,11 @@ public final class PetriNet {
     }
 
     public void deleteArc(Short id) {
-        this.arcs.remove(id);
+        this.arcs.remove(id); // TODO ak nie je ID v mape
+    }
+
+    public void deleteJustVertex(Short id) {
+        this.vertices.remove(id); // TODO ak nie je ID v mape
     }
 
     public void printPlaces() {
