@@ -6,6 +6,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
+import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
 
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
@@ -52,6 +53,34 @@ public class GuiObjectsManipulator {
         Transition2D transition2D = new Transition2D(e.getX()-DIAMETER/2,e.getY()-DIAMETER/2,DIAMETER,DIAMETER,transition,canvas.getPetriNet());
         canvas.getDrawables().add(transition2D);
         canvas.repaint();
+    }
+
+    public void placeAction(MouseEvent e) {
+        for (Drawable drawable : canvas.getDrawables()) {
+            if (drawable.contains(e.getX(),e.getY())) {
+                try {
+                    Place2D place = (Place2D) drawable;
+                    if (e.getButton() == 1) {
+                        // Left mouse button pressed
+                        place.getPlace().setTokenCount(place.getTokens()+1);
+                        canvas.repaint();
+                        return;
+                    } else if (e.getButton() == 3) {
+                        // Right mouse button pressed
+                        try {
+                            place.getPlace().setTokenCount(place.getTokens()-1);
+                        } catch (NegativeTokenCount ex) {
+                            ex.getMessage(); // Ignored
+                        }
+                        canvas.repaint();
+                        return;
+                    }
+                } catch (ClassCastException ex) {
+                    ex.getMessage(); // Ignore
+                }
+            }
+        }
+        addPlace(e);
     }
 
     public void addPlace(MouseEvent e) {

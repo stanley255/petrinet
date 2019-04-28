@@ -23,17 +23,24 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     private PetriNet petriNet;
     private List<Drawable> drawables;
     private String currentAction;
+    private String lastAction;
     private GuiObjectsManipulator guiObjectsManipulator;
 
     public PetriNetCanvas() {
         this.petriNet = new PetriNet();
         this.drawables = new ArrayList<>();
         this.currentAction = "play";
+        this.lastAction = "play";
         this.guiObjectsManipulator = new GuiObjectsManipulator(this);
     }
 
     public void setCurrentAction(String currentAction) {
+        this.lastAction = this.currentAction;
         this.currentAction = currentAction;
+        if (!lastAction.toLowerCase().equals(currentAction.toLowerCase())) {
+            guiObjectsManipulator.setStartPointPlace(null);
+            guiObjectsManipulator.setStartPointTransition(null);
+        }
     }
 
     public void setPetriNet(PetriNet petriNet) {
@@ -72,7 +79,7 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
                 guiObjectsManipulator.addTransition(e);
                 break;
             case "add place":
-                guiObjectsManipulator.addPlace(e);
+                guiObjectsManipulator.placeAction(e);
                 break;
             case "add arc":
                 guiObjectsManipulator.addArc(e);
