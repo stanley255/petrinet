@@ -5,8 +5,6 @@ import sk.stuba.fei.oop.projekt2.utils.ExportNetListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PetriNetFrame extends JFrame {
 
@@ -26,60 +24,24 @@ public class PetriNetFrame extends JFrame {
         // Added import button with import net action listener
         Button importButton = new Button("Import net");
         importButton.addActionListener(new ImportNetListener(petriNetCanvas));
-        // Added components to panel
-        panel.add(importButton);
         // Added export button
         Button exportButton = new Button("Export net");
         exportButton.addActionListener(new ExportNetListener(petriNetCanvas));
-        panel.add(exportButton);
         // Added transition button
-        Button transitionButton = new Button("Add transition");
-        transitionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button transitionButton = new ActionSettingButton("Add transition",petriNetCanvas);
         // Added place button
-        Button placeButton = new Button("Add place");
-        placeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button placeButton = new ActionSettingButton("Add place",petriNetCanvas);
         // Added arc button
-        Button arcButton = new Button("Add arc");
-        arcButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button arcButton = new ActionSettingButton("Add arc",petriNetCanvas);
         // Added reset arc button
-        Button resetArcButton = new Button("Add reset arc");
-        resetArcButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button resetArcButton = new ActionSettingButton("Add reset arc",petriNetCanvas);
         // Added play button
-        Button playButton = new Button("Play");
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button playButton = new ActionSettingButton("Play",petriNetCanvas);
         // Added delete button
-        Button deleteButton = new Button("Delete");
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                petriNetCanvas.setCurrentAction(e.getActionCommand());
-            }
-        });
+        Button deleteButton = new ActionSettingButton("Delete",petriNetCanvas);
+
+        panel.add(importButton);
+        panel.add(exportButton);
         panel.add(transitionButton);
         panel.add(placeButton);
         panel.add(arcButton);
