@@ -1,45 +1,36 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
 import sk.stuba.fei.oop.projekt2.petrinet.PetriNet;
-import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicArc;
-import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicInputArc;
-import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
-import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
-import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
-import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
-import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Vertex;
-import sk.stuba.fei.oop.projekt2.utils.GuiObjectsManipulator;
 
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
-public class PetriNetCanvas extends Canvas implements MouseListener {
+public class PetriNetCanvas extends Canvas {
 
     private PetriNet petriNet;
     private List<Drawable> drawables;
     private String currentAction;
     private String lastAction;
-    private GuiObjectsManipulator guiObjectsManipulator;
+    private Place2D startPointPlace;
+    private Transition2D startPointTransition;
 
     public PetriNetCanvas() {
         this.petriNet = new PetriNet();
         this.drawables = new ArrayList<>();
         this.currentAction = "play";
         this.lastAction = "play";
-        this.guiObjectsManipulator = new GuiObjectsManipulator(this);
+        this.startPointPlace = null;
+        this.startPointTransition = null;
     }
 
     public void setCurrentAction(String currentAction) {
         this.lastAction = this.currentAction;
         this.currentAction = currentAction;
         if (!lastAction.toLowerCase().equals(currentAction.toLowerCase())) {
-            guiObjectsManipulator.setStartPointPlace(null);
-            guiObjectsManipulator.setStartPointTransition(null);
+            this.startPointPlace = null;
+            this.startPointTransition = null;
         }
     }
 
@@ -59,6 +50,22 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
         return drawables;
     }
 
+    public Place2D getStartPointPlace() {
+        return startPointPlace;
+    }
+
+    public void setStartPointPlace(Place2D startPointPlace) {
+        this.startPointPlace = startPointPlace;
+    }
+
+    public Transition2D getStartPointTransition() {
+        return startPointTransition;
+    }
+
+    public void setStartPointTransition(Transition2D startPointTransition) {
+        this.startPointTransition = startPointTransition;
+    }
+
     @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
@@ -69,50 +76,14 @@ public class PetriNetCanvas extends Canvas implements MouseListener {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        if (!this.currentAction.toLowerCase().equals("add arc") && !this.currentAction.toLowerCase().equals("add reset arc")) {
-            guiObjectsManipulator.setStartPointPlace(null);
-            guiObjectsManipulator.setStartPointTransition(null);
-        }
-        switch(this.currentAction.toLowerCase()) {
-            case "add transition":
-                guiObjectsManipulator.addTransition(e);
-                break;
-            case "add place":
-                guiObjectsManipulator.placeAction(e);
-                break;
-            case "add arc":
-                guiObjectsManipulator.addArc(e);
-                break;
-            case "add reset arc":
-                guiObjectsManipulator.addResetArc(e);
-                break;
-            case "delete":
-                guiObjectsManipulator.delete(e);
-                break;
-            case "play":
-                guiObjectsManipulator.execute(e);
-                break;
+    public synchronized void addMouseListener(MouseListener l) {
+        super.addMouseListener(l);
+    }
+
+    public void removeMouseListeners() {
+        for (MouseListener mouseListener : getMouseListeners()) {
+            removeMouseListener(mouseListener);
         }
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }

@@ -1,7 +1,6 @@
 package sk.stuba.fei.oop.projekt2.gui;
 
-import sk.stuba.fei.oop.projekt2.utils.ImportNetListener;
-import sk.stuba.fei.oop.projekt2.utils.ExportNetListener;
+import sk.stuba.fei.oop.projekt2.utils.listeners.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,38 +19,33 @@ public class PetriNetFrame extends JFrame {
         Panel panel = new Panel();
         // Added canvas with mouse listener
         PetriNetCanvas petriNetCanvas = new PetriNetCanvas();
-        petriNetCanvas.addMouseListener(petriNetCanvas);
         // Added import button with import net action listener
         Button importButton = new Button("Import net");
         importButton.addActionListener(new ImportNetListener(petriNetCanvas));
         // Added export button
         Button exportButton = new Button("Export net");
         exportButton.addActionListener(new ExportNetListener(petriNetCanvas));
-        // Added transition button
-        Button transitionButton = new ActionSettingButton("Add transition",petriNetCanvas);
-        // Added place button
-        Button placeButton = new ActionSettingButton("Add place",petriNetCanvas);
-        // Added arc button
-        Button arcButton = new ActionSettingButton("Add arc",petriNetCanvas);
-        // Added reset arc button
-        Button resetArcButton = new ActionSettingButton("Add reset arc",petriNetCanvas);
-        // Added play button
-        Button playButton = new ActionSettingButton("Play",petriNetCanvas);
-        // Added delete button
-        Button deleteButton = new ActionSettingButton("Delete",petriNetCanvas);
+
+        Button playButton = new ActionButton("Play",petriNetCanvas,new PlayListener(petriNetCanvas));
+        Button deleteButton = new ActionButton("Delete",petriNetCanvas,new DeleteListener(petriNetCanvas));
+        Button transitionButton = new ActionButton("Transition",petriNetCanvas,new TransitionListener(petriNetCanvas));
+        Button placeButton = new ActionButton("Place",petriNetCanvas,new PlaceListener(petriNetCanvas));
+        Button arcButton = new ActionButton("Arc",petriNetCanvas,new ArcListener(petriNetCanvas));
+        Button resetArcButton = new ActionButton("ResetArc",petriNetCanvas,new ResetArcListener(petriNetCanvas));
+        Button tokenButton = new ActionButton("Token",petriNetCanvas, new TokenListener(petriNetCanvas));
 
         panel.add(importButton);
         panel.add(exportButton);
-        panel.add(transitionButton);
-        panel.add(placeButton);
-        panel.add(arcButton);
-        panel.add(resetArcButton);
         panel.add(playButton);
         panel.add(deleteButton);
+        panel.add(transitionButton);
+        panel.add(placeButton);
+        panel.add(tokenButton);
+        panel.add(arcButton);
+        panel.add(resetArcButton);
 
         this.add("North",panel);
         this.add("Center",petriNetCanvas);
-        // Setting frame to visible
         this.setVisible(true);
     }
 }
