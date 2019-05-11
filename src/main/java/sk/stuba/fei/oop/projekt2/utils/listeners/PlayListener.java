@@ -25,6 +25,7 @@ public class PlayListener extends ActionButtonListener {
             if (drawable instanceof Executable) {
                 ((Executable) drawable).onClick();
                 canvas.repaint();
+                return;
             }
         }
     }

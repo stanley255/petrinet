@@ -25,15 +25,6 @@ public class PetriNetCanvas extends Canvas {
         this.startPointTransition = null;
     }
 
-    public void setCurrentAction(String currentAction) {
-        this.lastAction = this.currentAction;
-        this.currentAction = currentAction;
-        if (!lastAction.toLowerCase().equals(currentAction.toLowerCase())) {
-            this.startPointPlace = null;
-            this.startPointTransition = null;
-        }
-    }
-
     public void setPetriNet(PetriNet petriNet) {
         this.petriNet = petriNet;
     }

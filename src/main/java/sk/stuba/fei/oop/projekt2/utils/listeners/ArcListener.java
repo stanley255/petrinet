@@ -42,20 +42,18 @@ public class ArcListener extends ActionButtonListener {
     }
 
     private void serveFirstBasicArcClick(Drawable drawable) {
-        System.out.println("1. click");
         try {
             canvas.setStartPointPlace((Place2D) drawable);
             canvas.setStartPointTransition(null);
-            System.out.println("Place was set as input");
+            System.out.println("(Arc Click First) Place was set as input");
         } catch (ClassCastException ex) {
             canvas.setStartPointTransition((Transition2D) drawable);
             canvas.setStartPointPlace(null);
-            System.out.println("Transition was set as input");
+            System.out.println("(Arc Click First) Transition was set as input");
         }
     }
 
     private void serveSecondBasicArcClick(Drawable drawable) {
-        System.out.println("2. click");
         if (canvas.getStartPointPlace() != null) {
             // Create BasicInputArc
             addBasicInputArc(drawable);
@@ -76,8 +74,9 @@ public class ArcListener extends ActionButtonListener {
             BasicInputArc2D arc2D = new BasicInputArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition.getX()+RADIUS,transition.getY()+RADIUS,startPointPlace.getId(),transition.getId(),arc);
             canvas.getDrawables().add(arc2D);
             canvas.repaint();
+            System.out.println("(Arc Click Second) Place and Transition connected");
         } catch (ClassCastException e) {
-            e.getMessage(); // Ignored
+            System.out.println("(Arc Click Second) Cannot connect these two objects");
         }
     }
 
@@ -90,8 +89,9 @@ public class ArcListener extends ActionButtonListener {
             BasicOutputArc2D arc2D = new BasicOutputArc2D(startPointTransition.getX()+RADIUS,startPointTransition.getY()+RADIUS,place.getX()+RADIUS,place.getY()+RADIUS,startPointTransition.getId(),place.getId(),arc);
             canvas.getDrawables().add(arc2D);
             canvas.repaint();
+            System.out.println("(Arc Click Second) Transition and Place connected");
         } catch (ClassCastException e) {
-            e.getMessage(); // Ignored
+            System.out.println("(Arc Click Second) Cannot connect these two objects");
         }
     }
 

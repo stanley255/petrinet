@@ -17,6 +17,7 @@ public class FileImporter {
         throw new FileLoadException();
     }
 
+    // Function that appends suffix to file if it is necessary
     private File appendSuffixToFile(File file, String suffix) {
         if (!file.getAbsolutePath().endsWith(suffix)) {
             return new File(file.getAbsolutePath()+suffix);

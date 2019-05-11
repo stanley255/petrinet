@@ -21,25 +21,33 @@ public class TokenListener extends ActionButtonListener {
                 try {
                     Place2D place = (Place2D) drawable;
                     if (e.getButton() == 1) {
-                        // Left mouse button pressed
-                        place.getPlace().setTokenCount(place.getTokens()+1);
-                        canvas.repaint();
+                        leftButtonTokenAction(place);
                         return;
                     } else if (e.getButton() == 3) {
-                        // Right mouse button pressed
-                        try {
-                            place.getPlace().setTokenCount(place.getTokens()-1);
-                        } catch (NegativeTokenCount ex) {
-                            ex.getMessage(); // Ignored
-                        }
-                        canvas.repaint();
+                        rightButtonTokenAction(place);
                         return;
                     }
                 } catch (ClassCastException ex) {
-                    ex.getMessage(); // Ignore
+                    System.out.println("Tokens can be accessed only in 'Place'");
                 }
             }
         }
+    }
+
+    private void leftButtonTokenAction(Place2D place) {
+        place.getPlace().setTokenCount(place.getTokens()+1);
+        canvas.repaint();
+        System.out.println("Token added to place");
+    }
+
+    private void rightButtonTokenAction(Place2D place) {
+        try {
+            place.getPlace().setTokenCount(place.getTokens()-1);
+            System.out.println("Token removed from place");
+        } catch (NegativeTokenCount ex) {
+            System.out.println("Cannot remove token from place");
+        }
+        canvas.repaint();
     }
 
 }

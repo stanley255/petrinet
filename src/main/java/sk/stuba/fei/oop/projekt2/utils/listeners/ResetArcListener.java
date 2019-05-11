@@ -42,8 +42,9 @@ public class ResetArcListener extends ActionButtonListener {
         try {
             canvas.setStartPointTransition(null);
             canvas.setStartPointPlace((Place2D) drawable);
-            System.out.println("Place was set as reset input");
+            System.out.println("(Reset Click First) Place was set as reset input");
         } catch (ClassCastException e) {
+            System.out.println("(Reset Click First) Cannot be set as input");
             canvas.setStartPointPlace(null);
         }
     }
@@ -57,7 +58,9 @@ public class ResetArcListener extends ActionButtonListener {
             ResetArc2D resetArc2D = new ResetArc2D(startPointPlace.getX()+RADIUS,startPointPlace.getY()+RADIUS,transition2D.getX()+RADIUS,transition2D.getY()+RADIUS,resetArc.getId(),startPointPlace.getId(),transition2D.getId(),resetArc);
             canvas.getDrawables().add(resetArc2D);
             canvas.repaint();
+            System.out.println("(Reset Click Second) Place and transition connected");
         } catch (ClassCastException e) {
+            System.out.println("(Reset Click Second) Cannot be connected");
             e.getMessage(); // Ignored
         }
         canvas.setStartPointPlace(null);
