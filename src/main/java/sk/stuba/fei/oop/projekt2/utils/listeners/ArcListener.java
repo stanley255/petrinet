@@ -6,7 +6,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.BasicOutputArc;
 
 import java.awt.event.MouseEvent;
 
-public class ArcListener extends ActionButtonListener {
+public final class ArcListener extends ActionButtonListener {
 
     public ArcListener(PetriNetCanvas canvas) {
         super(canvas);

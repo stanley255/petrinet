@@ -8,7 +8,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-public class ResetArc2D extends Arc2D implements Drawable {
+public final class ResetArc2D extends Arc2D implements Drawable {
 
     private ResetArc arc; // Added for future upgrades
 

@@ -12,7 +12,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 
 import java.util.*;
 
-public class DrawableConverter extends Converter<List<Drawable>, Document> {
+public final class DrawableConverter extends Converter<List<Drawable>, Document> {
 
     private Document document;
     private List<Drawable> drawables = new ArrayList<>();

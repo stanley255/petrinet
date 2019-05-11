@@ -6,7 +6,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Transition;
 
 import java.awt.event.MouseEvent;
 
-public class TransitionListener extends ActionButtonListener {
+public final class TransitionListener extends ActionButtonListener {
 
     public TransitionListener(PetriNetCanvas canvas) {
         super(canvas);

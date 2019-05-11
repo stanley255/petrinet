@@ -12,7 +12,7 @@ import sk.stuba.fei.oop.projekt2.gui.Transition2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DocumentConverter extends Converter<Document, List<Drawable>> {
+public final class DocumentConverter extends Converter<Document, List<Drawable>> {
 
     private List<Drawable> drawables;
 

@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.List;
 
-public class ImportNetListener implements ActionListener {
+public final class ImportNetListener implements ActionListener {
 
     private PetriNetCanvas canvas;
 

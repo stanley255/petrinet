@@ -1,9 +1,9 @@
 /*
 * Vypracoval: Stanislav Pekarovic
 * AIS_ID: 92323
-* Datum: 17.04.2019
+* Datum: 11.05.2019
 *
-* Petriho siete Zadanie 2
+* Petriho siete Zadanie 3
 *
 * */
 

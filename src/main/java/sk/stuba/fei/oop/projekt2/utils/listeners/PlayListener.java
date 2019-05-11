@@ -6,7 +6,7 @@ import sk.stuba.fei.oop.projekt2.gui.PetriNetCanvas;
 
 import java.awt.event.MouseEvent;
 
-public class PlayListener extends ActionButtonListener {
+public final class PlayListener extends ActionButtonListener {
 
     public PlayListener(PetriNetCanvas canvas) {
         super(canvas);

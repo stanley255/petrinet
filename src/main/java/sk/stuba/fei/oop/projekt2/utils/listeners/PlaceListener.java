@@ -6,7 +6,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.vertices.Place;
 
 import java.awt.event.MouseEvent;
 
-public class PlaceListener extends ActionButtonListener {
+public final class PlaceListener extends ActionButtonListener {
 
     public PlaceListener(PetriNetCanvas canvas) {
         super(canvas);

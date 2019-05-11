@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteListener extends ActionButtonListener {
+public final class DeleteListener extends ActionButtonListener {
 
     public DeleteListener(PetriNetCanvas canvas) {
         super(canvas);

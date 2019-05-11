@@ -5,7 +5,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.components.arcs.ResetArc;
 
 import java.awt.event.MouseEvent;
 
-public class ResetArcListener extends ActionButtonListener {
+public final class ResetArcListener extends ActionButtonListener {
 
     public ResetArcListener(PetriNetCanvas canvas) {
         super(canvas);

@@ -12,7 +12,7 @@ import javax.xml.bind.Marshaller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ExportNetListener implements ActionListener {
+public final class ExportNetListener implements ActionListener {
 
     private PetriNetCanvas canvas;
 

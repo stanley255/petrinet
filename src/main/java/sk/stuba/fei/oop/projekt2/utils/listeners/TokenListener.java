@@ -7,7 +7,7 @@ import sk.stuba.fei.oop.projekt2.petrinet.exceptions.NegativeTokenCount;
 
 import java.awt.event.MouseEvent;
 
-public class TokenListener extends ActionButtonListener {
+public final class TokenListener extends ActionButtonListener {
 
     public TokenListener(PetriNetCanvas canvas) {
         super(canvas);
