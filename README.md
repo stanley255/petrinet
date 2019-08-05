@@ -3,7 +3,7 @@
 ## GRAPHICS SIMULATOR OF PETRINETS
 
 Java application that I created for my Object Oriented Programming Class (B-OOP)
-## What I Learned
+## What I've Learned
 * basic concepts of OOP
 * how to write code that is easier to extend
 * how to structure my code for larger projects
